@@ -1,0 +1,248 @@
+import { Helmet } from "react-helmet-async";
+import { BookOpen, CheckCircle2, HeartHandshake, Target, Users } from "lucide-react";
+import buildingImage from "../assets/images/building-optimized.jpg";
+import founderImage from "../assets/images/founder-optimized.jpg";
+import radhikaImage from "../assets/images/radhika-optimized.jpg";
+import { ABOUT_SECTION_PAGES } from "../data/navigation";
+import { FacultyDirectory } from "./AboutFacultyPage";
+
+const COLLEGE_PARAGRAPHS = [
+  "Smt. Sudhatai Mandke College of Commerce was established in 2002 by the Mandke Human Happiness Foundation, Pune; by Shri. Sudhir Mandke, a leading promoter and builder of Pune. The college is affiliated to Savitribai Phule Pune University, providing a graduate degree in B.Com, and is also approved by the Government of Maharashtra.",
+  "A senior college, the main aim here is to create self-assured global citizens who will be confident and highly eligible to take up jobs or venture into self-employment.",
+  "Besides academic excellence, the college also provides students with an environment conducive for overall development of their personality. The college through its various activities viz. NSS, Soft Skills, Earn & Learn, Career Guidance and Counseling, Placement Cell etc. encourage students to showcase their talent in various fields and help them become well rounded individuals.",
+];
+
+const SUDHATAI_PARAGRAPHS = [
+  "Smt. Sudhatai Mandke, a name that needs no introduction in the education fraternity. A highly respected teacher of Hindi & Marathi at the Guru Nanak High School, Pune. She dedicated 30 years of her life not only helping her students gain proficiency in these languages, but also taught them the ways of life and above all to become a good human being.",
+  "Her life inspired many. She has done an abundance of social work through the Mahila Arthik Vikas Mahamandal, to help women empower themselves by teaching them various Arts & Crafts and educating them to be self-sufficient. She was the Vice-president of the Marathi Natya Parishad and helped the Marathi Theater industry to grow in more than one way. She was a member of the core committee for the Hindi Rashtra Bhasha Exam, which conducts nationwide examination for Hindi language proficiency.",
+  "A people person, she always encouraged those around her to be successful, and most importantly good individuals. It was to keep this amazing spirit alive, that the Mandke Group through its Mandke Human Happiness Foundation, established the Smt. Sudhatai Mandke College in 2002.",
+];
+
+const FOREWORD_PARAGRAPHS = [
+  "With great pleasure and privilege I extend my best wishes to you all. Smt. Sudhatai Mandke College, Pune, being affiliated to Savitribai Phule Pune University and approved by AICTE, conducts various courses designed by the university at undergraduate level.",
+  "The qualified and dedicated team of faculty and administrative staff work hard each day to ensure that our students have an enriching and holistic learning experience. College assures to nurture students to help them enhance their skills and potential not only through academic learning, but also by participating in extracurricular activities. We ensure to inculcate entrepreneurial and leadership skills in our students.",
+  "We believe that an institution like ours can sculpt students into well-rounded individuals ready to face the myriad of challenges with confidence and zest.",
+  "We aspire to acquire excellence by way of introducing new areas of commerce education and providing support facilities to students.",
+];
+
+const FOUNDER_PARAGRAPHS = [
+  "Mandke Human Happiness Foundation (MHHF) is formed to serve the society, particularly in the field of need based education since education is the basis for development of an individual and in turn our society.",
+  "Education in India has undergone a fundamental change in terms of Academic & Practical knowledge. Considering this need of the hour, the Trust has decided to impart Quality education through revised curriculum giving equal stress on both Theoretical & Practical know-how, to students from Urban, Rural and International areas.",
+  "This will help create a highly trained workforce that will cater to the needs of modern businesses and industries. We are trying to generate or recognize that spark in our students for establishing themselves in self-employment as well.",
+  "To achieve this MHHF ensures you good resources, state of the art infrastructure, experienced faculty and a very conducive environment.",
+];
+
+const RADHIKA_PARAGRAPHS = [
+  "Radhika Mandke-Godbole is the Managing Director of Smt. Sudhatai Mandke College and has been associated with the institution since 2014.",
+  "With a student-centric and progressive approach to education, she has led several initiatives focused on holistic development, employability, and modernizing the learning environment.",
+  "She has played a key role in strengthening industry-oriented learning through Mandke Institute for Learning Employable Skills (MILES), creating a direct pipeline between courses and careers through practical, skill-based training and exposure.",
+  "A former professional tennis player, Radhika brings discipline, resilience, and performance-driven leadership to education management. Through her vision, Smt. Sudhatai Mandke College continues to grow as a future-focused institution committed to developing confident, skilled, and career-ready individuals.",
+];
+
+const CORE_VALUES = [
+  "To create self-assured global citizens who will be confident and highly eligible.",
+  "To encourage team work, hard work and integrity in students by preparing them to take up jobs or venture into self-employment.",
+  "To provide students with an environment which is conducive for overall development of their personality.",
+];
+
+function TextBlock({
+  title,
+  label,
+  role,
+  children,
+}: {
+  title: string;
+  label?: string;
+  role?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mx-auto max-w-6xl px-4 py-5 md:py-6">
+      <div className="rounded-btn border border-borderSoft bg-white p-5 shadow-card md:p-6">
+        {label ? <p className="text-sm font-bold uppercase tracking-widest text-accent">{label}</p> : null}
+        <h2 className="mt-2 font-heading text-3xl font-bold text-primary md:text-4xl">{title}</h2>
+        {role ? <p className="mt-2 text-sm font-bold uppercase tracking-widest text-accent">{role}</p> : null}
+        <div className="mt-4 space-y-3 text-base leading-relaxed text-textSecondary md:text-lg">{children}</div>
+      </div>
+    </section>
+  );
+}
+
+export function AboutPage() {
+  return (
+    <>
+      <Helmet>
+        <title>About Smt. Sudhatai Mandke College of Commerce</title>
+        <meta
+          name="description"
+          content="About Smt. Sudhatai Mandke College of Commerce, Sudhatai Mandke, Principal's Foreword, Vision, Mission and Core Values."
+        />
+      </Helmet>
+
+      <section className="bg-section py-8 md:py-10">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-widest text-accent">About</p>
+            <h1 className="mt-3 font-heading text-4xl font-bold leading-tight text-primary md:text-5xl">
+              Smt. Sudhatai Mandke College of Commerce
+            </h1>
+            <p className="mt-3 text-lg leading-relaxed text-textSecondary">
+              A senior college established in 2002 by Mandke Human Happiness Foundation, Pune, dedicated to commerce
+              education, confidence, employability, and all-round student development.
+            </p>
+          </div>
+          <figure className="overflow-hidden rounded-btn border border-borderSoft bg-white shadow-lift">
+            <img src={buildingImage} alt="Smt. Sudhatai Mandke College Growth Centre" className="h-full max-h-[420px] w-full object-cover" />
+            <figcaption className="px-4 py-3 text-sm font-semibold text-textSecondary"></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <div id="about-college" className="scroll-mt-40">
+        <TextBlock title="About Smt. Sudhatai Mandke College of Commerce">
+          {COLLEGE_PARAGRAPHS.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </TextBlock>
+      </div>
+
+      <div id="smt-sudhatai-mandke" className="scroll-mt-40">
+        <TextBlock title="Smt. Sudhatai Mandke" role="Teacher | Inspirator | Philanthropist | Humanitarian">
+          {SUDHATAI_PARAGRAPHS.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </TextBlock>
+      </div>
+
+      <section id="founders-message" className="mx-auto max-w-6xl scroll-mt-40 px-4 py-5 md:py-6">
+        <div className="grid gap-6 rounded-btn border border-borderSoft bg-white p-5 shadow-card md:p-6 lg:grid-cols-[1.35fr_0.85fr] lg:items-start">
+          <div>
+            <h2 className="font-heading text-3xl font-bold text-primary md:text-4xl">Late Shri. Sudhir Mandke</h2>
+            <p className="mt-2 text-sm font-bold uppercase tracking-widest text-accent">Founder</p>
+            <div className="mt-4 space-y-3 text-base leading-relaxed text-textSecondary md:text-lg">
+              {FOUNDER_PARAGRAPHS.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+          <figure className="overflow-hidden rounded-btn border border-borderSoft bg-section">
+            <img src={founderImage} alt="Late Shri. Sudhir Mandke" className="h-full min-h-[280px] w-full object-cover" />
+          </figure>
+        </div>
+      </section>
+
+      <section id="managing-director" className="mx-auto max-w-6xl scroll-mt-40 px-4 py-5 md:py-6">
+        <div className="grid gap-6 rounded-btn border border-borderSoft bg-white p-5 shadow-card md:p-6 lg:grid-cols-[0.85fr_1.35fr] lg:items-start">
+          <figure className="overflow-hidden rounded-btn border border-borderSoft bg-section">
+            <img src={radhikaImage} alt="Radhika Mandke-Godbole" className="h-full min-h-[320px] w-full object-cover object-top" />
+          </figure>
+          <div>
+            <h2 className="font-heading text-3xl font-bold text-primary md:text-4xl">Radhika Mandke-Godbole</h2>
+            <p className="mt-2 text-sm font-bold uppercase tracking-widest text-accent">Managing Director</p>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-textSecondary md:text-lg">
+              {RADHIKA_PARAGRAPHS.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="principals-foreword" className="scroll-mt-40">
+        <TextBlock title="Principal's Foreword" label="Dear Students">
+          {FOREWORD_PARAGRAPHS.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          <div className="pt-3 font-semibold text-primary">
+            <p>Sincerely,</p>
+            <p className="mt-2">Dr. Ambadas T. Bhosale</p>
+            <p>Principal</p>
+          </div>
+        </TextBlock>
+      </div>
+
+      <section id="vision-mission" className="scroll-mt-40 bg-section py-5 md:py-6">
+        <div className="mx-auto grid max-w-6xl gap-4 px-4 lg:grid-cols-3">
+          <div className="rounded-btn border border-borderSoft bg-white p-5 shadow-card">
+            <Target className="h-9 w-9 text-accent" aria-hidden />
+            <h2 className="mt-3 font-heading text-2xl font-bold text-primary">Our Vision</h2>
+            <p className="mt-3 leading-relaxed text-textSecondary">
+              To serve the society particularly in the field of need based education; help individuals maximize their
+              potential and in turn make the society better as a whole.
+            </p>
+          </div>
+          <div className="rounded-btn border border-borderSoft bg-white p-5 shadow-card lg:col-span-2">
+            <BookOpen className="h-9 w-9 text-accent" aria-hidden />
+            <h2 className="mt-3 font-heading text-2xl font-bold text-primary">Our Mission</h2>
+            <p className="mt-3 leading-relaxed text-textSecondary">
+              We are committed to delivering quality higher education that nurtures moral values, intellectual curiosity,
+              and physical well-being. Our goal is to create a supportive and dynamic learning environment that empowers
+              students with the skills, confidence, and guidance needed for career success. Through strong industry
+              partnerships, innovative teaching practices, and a focus on holistic development, we prepare our students and
+              staff to achieve global recognition and thrive in an ever-evolving world.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="core-values" className="mx-auto max-w-6xl scroll-mt-40 px-4 py-5 md:py-6">
+        <div className="rounded-btn border border-borderSoft bg-white p-5 shadow-card md:p-6">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-widest text-accent">Core Values</p>
+              <h2 className="mt-2 font-heading text-3xl font-bold text-primary">Values That Guide Us</h2>
+            </div>
+            <HeartHandshake className="h-10 w-10 text-accent" aria-hidden />
+          </div>
+          <ul className="mt-4 grid gap-3 md:grid-cols-3">
+            {CORE_VALUES.map((value) => (
+              <li key={value} className="flex gap-3 rounded-btn bg-section p-3.5 text-textSecondary">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden />
+                <span>{value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="faculty-staff" className="scroll-mt-40 border-t border-borderSoft bg-section py-5 md:py-6">
+        <div className="mx-auto max-w-6xl px-4">
+          <p className="text-sm font-bold uppercase tracking-widest text-accent">Our Team</p>
+          <h2 className="mt-3 font-heading text-4xl font-bold text-primary md:text-5xl">Faculty</h2>
+        </div>
+        <FacultyDirectory showIntro={false} />
+      </section>
+
+      {ABOUT_SECTION_PAGES.filter((page) =>
+        [
+          "/about/college-development-committee",
+          "/about/important-committees",
+          "/about/infrastructure",
+          "/about/idp-24-29",
+        ].includes(page.to)
+      ).map((page) => (
+        <section
+          key={page.to}
+          id={page.to.replace("/about/", "")}
+          className="mx-auto max-w-6xl scroll-mt-40 px-4 py-5 md:py-6"
+        >
+          <div className="rounded-btn border border-borderSoft bg-white p-5 shadow-card md:p-6">
+            <h2 className="font-heading text-3xl font-bold text-primary md:text-4xl">{page.label}</h2>
+            <div className="mt-4 space-y-3 text-base leading-relaxed text-textSecondary md:text-lg">
+              {page.content?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+            {page.highlights?.length ? (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {page.highlights.map((highlight) => (
+                  <span key={highlight} className="rounded-btn bg-section px-3 py-1.5 text-sm font-semibold text-primary">
+                    {highlight}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </section>
+      ))}
+    </>
+  );
+}

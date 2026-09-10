@@ -1,0 +1,96 @@
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { BookOpen, Target, Award, Briefcase, CheckCircle, Compass, ExternalLink, Layers3, IndianRupee } from "lucide-react";
+import bcomStudentLearningImage from "../assets/images/bcom-student-learning.png";
+import courseDetailsPdf from "../assets/pdf/course_details.pdf?url";
+const COURSE_HIGHLIGHTS = [
+    {
+        icon: BookOpen,
+        title: "Comprehensive Curriculum",
+        desc: "SPPU-designed commerce education with accounting, finance, and business management fundamentals.",
+    },
+    {
+        icon: Target,
+        title: "Skill Development",
+        desc: "Practical workshops in taxation, auditing, financial analysis, and communication.",
+    },
+    {
+        icon: Award,
+        title: "Industry Recognition",
+        desc: "Internships with leading firms and placement partnerships across financial and corporate sectors.",
+    },
+    {
+        icon: Briefcase,
+        title: "Career Ready",
+        desc: "Career counselling and interview preparation to launch successful commerce careers.",
+    },
+];
+const LEARNING_OUTCOMES = [
+    "Apply accounting principles and practices in real-world business scenarios",
+    "Analyze financial statements and make informed business decisions",
+    "Understand taxation policies and compliance requirements",
+    "Develop business plans and entrepreneurial ventures",
+    "Use business software and digital tools effectively",
+    "Communicate business ideas clearly to stakeholders",
+    "Demonstrate ethical business practices and corporate governance",
+    "Work effectively in teams and lead projects",
+];
+const STRUCTURED_PATHWAY = [
+    {
+        icon: Compass,
+        title: "Custom Clear Career Paths",
+    },
+    {
+        icon: Layers3,
+        title: "Multi Disciplinary Modules",
+    },
+    {
+        icon: IndianRupee,
+        title: "Paid Internships",
+    },
+];
+export function CommercePage() {
+    return (_jsxs(_Fragment, { children: [_jsxs(Helmet, { children: [_jsx("title", { children: "B.Com Program \u2014 Mandke College | SPPU Affiliated | Commerce Education" }), _jsx("meta", { name: "description", content: "B.Com program at Mandke College, Pune - SPPU affiliated, NAAC accredited. Building Competence & Mindset. Placement-focused commerce education." }), _jsx("meta", { name: "keywords", content: "B.Com Pune, Commerce degree, SPPU, Mandke College, commerce admissions, accounting, finance, business" })] }), _jsxs("section", { className: "relative overflow-hidden bg-gradient-to-br from-primary via-[#0f1f4d] to-dark py-6 text-white md:py-8", children: [_jsx("div", { className: "absolute inset-0 bg-gradient-to-tr from-accent/25 via-transparent to-transparent" }), _jsx("div", { className: "pointer-events-none absolute -right-20 top-1/4 h-96 w-96 rounded-full bg-accent/20 blur-3xl" }), _jsxs("div", { className: "relative mx-auto max-w-6xl px-4", children: [_jsx(motion.span, { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 }, className: "inline-block rounded-badge bg-accent/20 px-3 py-1 text-xs font-bold uppercase text-accent", children: "B.COM = Building Competence & Mindset" }), _jsxs(motion.div, { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { delay: 0.2 }, className: "mt-6 flex flex-wrap gap-4", children: [_jsx(Link, { to: "/admissions", className: "inline-flex min-h-[48px] items-center justify-center rounded-btn bg-accent px-8 py-3.5 text-base font-bold text-white shadow-lg hover:brightness-105", children: "Apply Now" }), _jsx("a", { href: "#curriculum", className: "inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-white/90 bg-white/5 px-8 py-3.5 text-base font-bold text-white backdrop-blur-sm transition hover:bg-white/15", children: "View Curriculum" })] }), _jsx(motion.div, { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { delay: 0.25 }, className: "mt-6 flex flex-wrap gap-6", children: [
+                                    { label: "Duration", value: "3 Years" },
+                                    { label: "Affiliation", value: "SPPU, Pune" },
+                                    { label: "Intake", value: "FY/SY/TY" },
+                                    { label: "Approach", value: "Industry-Linked" },
+                                ].map((item) => (_jsxs("div", { children: [_jsx("p", { className: "text-sm text-slate-400", children: item.label }), _jsx("p", { className: "font-semibold", children: item.value })] }, item.label))) })] })] }), _jsxs("section", { className: "mx-auto max-w-6xl px-4 py-6 md:py-8", children: [_jsxs(motion.div, { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, className: "grid gap-8 lg:grid-cols-2 lg:items-stretch", children: [_jsxs("div", { className: "flex flex-col justify-center", children: [_jsx("p", { className: "text-sm font-bold uppercase tracking-widest text-accent", children: "Program Overview" }), _jsx("h2", { className: "mt-3 font-heading text-3xl font-bold text-primary md:text-4xl", children: "Commerce with a Difference" }), _jsx("p", { className: "mt-6 text-lg leading-relaxed text-textSecondary", children: "Mandke College's B.Com program combines Savitribai Phule Pune University's robust curriculum with industry partnerships, skill development, and placement support. We believe in building not just commerce knowledge, but competence and mindset for lifelong success." }), _jsx("ul", { className: "mt-5 space-y-3", children: ["SPPU-aligned curriculum", "Placement-focused approach", "Expert faculty mentoring", "Industry internships"].map((item) => (_jsxs("li", { className: "flex items-start gap-3", children: [_jsx(CheckCircle, { className: "mt-1 h-5 w-5 shrink-0 text-accent" }), _jsx("span", { className: "font-semibold text-primary", children: item })] }, item))) })] }), _jsx("figure", { className: "min-h-[360px] overflow-hidden rounded-2xl border border-borderSoft bg-white shadow-lift", children: _jsx("img", { src: bcomStudentLearningImage, alt: "B.Com students collaborating on accounting and business studies in a classroom", className: "h-full min-h-[360px] w-full object-cover", loading: "eager", decoding: "async" }) })] }), _jsx("div", { className: "mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4", children: COURSE_HIGHLIGHTS.map((h, i) => {
+                            const Icon = h.icon;
+                            return (_jsxs(motion.div, { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { delay: i * 0.05 }, className: "rounded-2xl border border-borderSoft bg-white p-5 shadow-card", children: [_jsx("div", { className: "flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/15", children: _jsx(Icon, { className: "h-5 w-5 text-accent" }) }), _jsx("h3", { className: "mt-4 font-heading font-semibold text-primary", children: h.title }), _jsx("p", { className: "mt-2 text-sm text-textSecondary", children: h.desc })] }, h.title));
+                        }) })] }), _jsx("section", { className: "bg-primary py-6 text-white md:py-8", children: _jsx("div", { className: "mx-auto max-w-6xl px-4", children: _jsxs("div", { className: "grid gap-6 lg:grid-cols-[1fr_1.2fr] lg:items-center", children: [_jsxs(motion.div, { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, children: [_jsx("p", { className: "text-sm font-bold uppercase tracking-widest text-accent", children: "Structured Pathway" }), _jsx("h2", { className: "mt-3 font-heading text-3xl font-bold md:text-4xl", children: "More Than a Commerce Degree" }), _jsx("p", { className: "mt-5 text-lg leading-relaxed text-slate-200", children: "Commerce academics, skill labs, placement guidance, student mentoring, and campus activities in one structured pathway." })] }), _jsx("div", { className: "grid gap-4 sm:grid-cols-3", children: STRUCTURED_PATHWAY.map((item, index) => {
+                                    const Icon = item.icon;
+                                    return (_jsxs(motion.div, { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { delay: index * 0.08 }, className: "rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm", children: [_jsx("div", { className: "flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-white", children: _jsx(Icon, { className: "h-6 w-6", "aria-hidden": true }) }), _jsx("h3", { className: "mt-5 font-heading text-lg font-bold", children: item.title })] }, item.title));
+                                }) })] }) }) }), _jsx("section", { className: "bg-section py-6 md:py-8", children: _jsxs("div", { className: "mx-auto max-w-6xl px-4", children: [_jsxs("div", { className: "mx-auto max-w-3xl text-center", children: [_jsx("p", { className: "text-sm font-bold uppercase tracking-widest text-accent", children: "Our Approach" }), _jsx("h2", { className: "mt-3 font-heading text-3xl font-bold text-primary md:text-4xl", children: "Mandke College Approach" }), _jsx("p", { className: "mt-4 text-lg text-textSecondary", children: "At Mandke College, B.COM stands for Building Competence & Mindset. More than a traditional commerce degree, it is a student-focused journey designed to develop practical skills, confidence, industry readiness, and the mindset needed to succeed in the real world." })] }), _jsx("div", { className: "mt-6 grid gap-4 md:grid-cols-3", children: [
+                                {
+                                    emoji: "💼",
+                                    title: "Customised Pathways",
+                                    desc: "We believe every student is unique. Career pathways are tailored based on individual abilities, strengths, and interests.",
+                                },
+                                {
+                                    emoji: "🎯",
+                                    title: "Industry Ready",
+                                    desc: "Real-world projects, case studies, and internships ensure students develop practical skills valued by employers.",
+                                },
+                                {
+                                    emoji: "🌟",
+                                    title: "Better You Philosophy",
+                                    desc: "Our mission is helping every student become the best version of themselves — confident, capable, and purpose-driven.",
+                                },
+                            ].map((item, i) => (_jsxs(motion.div, { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { delay: i * 0.05 }, className: "rounded-2xl border border-borderSoft bg-white p-5 shadow-card", children: [_jsx("p", { className: "text-4xl", children: item.emoji }), _jsx("h3", { className: "mt-4 font-heading text-xl font-bold text-primary", children: item.title }), _jsx("p", { className: "mt-2 text-textSecondary", children: item.desc })] }, item.title))) })] }) }), _jsxs("section", { id: "curriculum", className: "mx-auto max-w-6xl px-4 py-6 md:py-8", children: [_jsx("h2", { className: "font-heading text-3xl font-bold text-primary md:text-4xl", children: "Course Structure" }), _jsx("p", { className: "mt-4 max-w-2xl text-lg text-textSecondary", children: "The B.Com program is structured across 6 semesters (3 years) with a balance of core commerce subjects, electives, and practical training aligned with SPPU curriculum standards." }), _jsxs("a", { href: courseDetailsPdf, target: "_blank", rel: "noreferrer", className: "mt-6 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-btn bg-accent px-6 py-3 text-base font-bold text-white shadow-md transition hover:brightness-105", children: [_jsx(ExternalLink, { className: "h-5 w-5", "aria-hidden": true }), "Course Details & Objectives"] }), _jsx("div", { className: "mt-6 grid gap-4 md:grid-cols-3", children: [
+                            {
+                                year: "First Year (FY)",
+                                subjects: ["Fundamentals of Accounting", "Micro Economics", "Business Organization", "Environmental Studies"],
+                            },
+                            {
+                                year: "Second Year (SY)",
+                                subjects: ["Advanced Accounting", "Corporate Law", "Macro Economics", "Business Communication"],
+                            },
+                            {
+                                year: "Third Year (TY)",
+                                subjects: ["Auditing & Taxation", "Financial Management", "Business Strategy", "Industry Project"],
+                            },
+                        ].map((year, i) => (_jsxs(motion.div, { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { delay: i * 0.05 }, className: "rounded-2xl border border-borderSoft bg-white p-5 shadow-card", children: [_jsx("h3", { className: "font-heading text-lg font-bold text-accent", children: year.year }), _jsx("ul", { className: "mt-4 space-y-2", children: year.subjects.map((subject) => (_jsxs("li", { className: "flex items-start gap-2 text-sm text-textSecondary", children: [_jsx("span", { className: "mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" }), subject] }, subject))) })] }, year.year))) }), _jsxs("div", { className: "mt-6 rounded-2xl border border-borderSoft bg-gradient-to-br from-primary/5 to-accent/10 p-5", children: [_jsx("p", { className: "text-sm font-semibold uppercase tracking-widest text-accent", children: "Note" }), _jsx("p", { className: "mt-3 text-textSecondary", children: "The detailed curriculum, syllabus, and elective options are based on Savitribai Phule Pune University guidelines. Students can access the full SPPU curriculum document from the academic office or college website. Subjects and structure may be updated annually in alignment with SPPU directives." })] })] }), _jsx("section", { className: "bg-section py-6 md:py-8", children: _jsx("div", { className: "mx-auto max-w-6xl px-4", children: _jsxs("div", { className: "grid gap-6 lg:grid-cols-2", children: [_jsxs("div", { children: [_jsx("p", { className: "text-sm font-bold uppercase tracking-widest text-accent", children: "Program Outcomes" }), _jsx("h2", { className: "mt-3 font-heading text-3xl font-bold text-primary md:text-4xl", children: "What You'll Achieve" }), _jsx("p", { className: "mt-6 text-lg text-textSecondary", children: "Upon completion of the B.Com program, graduates will have developed practical skills, theoretical knowledge, and professional competencies required for successful careers in commerce and finance." })] }), _jsx("div", { className: "space-y-3", children: LEARNING_OUTCOMES.map((outcome, i) => (_jsxs(motion.div, { initial: { opacity: 0, x: 12 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { delay: i * 0.03 }, className: "flex items-start gap-3 rounded-lg border border-borderSoft bg-white p-4", children: [_jsx(CheckCircle, { className: "mt-1 h-5 w-5 shrink-0 text-accent" }), _jsx("span", { className: "text-sm text-textSecondary", children: outcome })] }, outcome))) })] }) }) }), _jsxs("section", { className: "mx-auto max-w-6xl px-4 py-6 md:py-8", children: [_jsx("h2", { className: "font-heading text-3xl font-bold text-primary md:text-4xl", children: "Academic Information" }), _jsxs("div", { className: "mt-6 grid gap-4 md:grid-cols-2", children: [_jsxs("div", { className: "rounded-2xl border border-borderSoft bg-white p-5 shadow-card", children: [_jsx("h3", { className: "font-heading text-xl font-bold text-primary", children: "Academic Calendar" }), _jsx("p", { className: "mt-4 text-textSecondary", children: "The academic year runs from June to May, with two semesters aligned with SPPU guidelines. Detailed academic calendar including semester dates, examination schedules, and holidays is available in the college prospectus and on the portal." }), _jsx(Link, { to: "/contact", className: "mt-6 inline-block font-semibold text-accent hover:underline", children: "Download Academic Calendar \u2192" })] }), _jsxs("div", { className: "rounded-2xl border border-borderSoft bg-white p-5 shadow-card", children: [_jsx("h3", { className: "font-heading text-xl font-bold text-primary", children: "Time Table" }), _jsx("p", { className: "mt-4 text-textSecondary", children: "Class schedules are designed to balance theoretical learning with practical sessions and self-study time. Time tables for each semester are announced at the start of the academic year. Check the college portal or student dashboard for current schedules." }), _jsx(Link, { to: "/contact", className: "mt-6 inline-block font-semibold text-accent hover:underline", children: "View Current Time Table \u2192" })] })] })] }), _jsx("section", { className: "bg-gradient-to-r from-primary via-dark to-accent py-6 text-white md:py-8", children: _jsxs("div", { className: "mx-auto max-w-4xl px-4 text-center", children: [_jsx("h2", { className: "font-heading text-3xl font-bold md:text-4xl", children: "Ready to Build Your Commerce Career?" }), _jsx("p", { className: "mt-6 text-lg text-white/90", children: "Join Mandke College's B.Com program and prepare for a confident, practical commerce career. Admissions open for 2026-27." }), _jsxs("div", { className: "mt-6 flex flex-wrap justify-center gap-4", children: [_jsx(Link, { to: "/admissions", className: "inline-flex min-h-[48px] items-center justify-center rounded-btn bg-white px-8 py-3.5 text-base font-bold text-primary shadow-lg", children: "Apply Now" }), _jsx(Link, { to: "/contact#enquiry", className: "inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-white px-8 py-3.5 text-base font-bold text-white", children: "Ask Questions" })] })] }) })] }));
+}
