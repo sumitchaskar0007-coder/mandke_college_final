@@ -1,11 +1,15 @@
 import { CheckCircle2, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 export function AdmissionsPopup() {
   const [open, setOpen] = useState(false);
+  const hasShownOnThisLoad = useRef(false);
 
   useEffect(() => {
+    // Show once per full browser load or refresh; route changes do not reopen it.
+    if (hasShownOnThisLoad.current) return;
+    hasShownOnThisLoad.current = true;
     const timer = window.setTimeout(() => setOpen(true), 700);
     return () => window.clearTimeout(timer);
   }, []);
@@ -44,7 +48,7 @@ export function AdmissionsPopup() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="admissions-popup-title"
-        className="relative w-full max-w-lg overflow-hidden rounded-card bg-[#f8fbff] shadow-2xl"
+        className="relative max-h-[calc(100dvh-2rem)] w-full max-w-lg overflow-y-auto rounded-card bg-[#f8fbff] shadow-2xl"
       >
         <button
           type="button"

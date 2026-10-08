@@ -22,6 +22,7 @@ export const ABOUT_LINKS: DropdownLink[] = [
   { label: "About the College", to: "/about#about-college" },
   { label: "About Smt. Sudhatai Mandke", to: "/about#smt-sudhatai-mandke" },
   { label: "Founder’s Legacy", to: "/about#founders-message" },
+  { label: "About Mandke Human Happiness Foundation", to: "/about#mhhf" },
   { label: "Managing Director", to: "/about#managing-director" },
   { label: "Principal's Foreword", to: "/about#principals-foreword" },
   { label: "Vision & Mission", to: "/about#vision-mission" },
@@ -34,12 +35,10 @@ export const ABOUT_LINKS: DropdownLink[] = [
 ];
 
 export const ACADEMICS_LINKS: DropdownLink[] = [
-  { label: "Courses", to: "/academics/courses" },
-  { label: "NEP 2020", to: "/academics/nep-2020" },
-  { label: "B.Com", to: "/commerce" },
+  { label: "Commerce", to: "/academics/courses" },
+  { label: "Mandke College Approach", to: "/academics/mandke-college-approach" },
   // BBA and BCA links are temporarily disabled.
   { label: "Admission Process", to: "/academics/admission-process" },
-  { label: "Admission Enquiry", to: "/academics/admission-enquiry" },
   { label: "Academic Bank of Credits (ABC)", to: "/academics/academic-bank-of-credits" },
   { label: "Academic Calendar", to: "/academics/academic-calendar" },
 ];
@@ -184,37 +183,35 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Activities", to: "/activities", dropdown: ACTIVITIES_LINKS },
   { label: "Stakeholders", to: "/stakeholders", dropdown: STAKEHOLDER_LINKS },
   { label: "Alumni", to: "/alumni" },
-  { label: "MHHF", to: "/mhhf", dropdown: MHHF_LINKS },
+  { label: "Skill Development", to: "/mhhf/skill-development" },
   { label: "Contact Us", to: "/contact" },
 ];
 
 export const SECTION_PAGES: SectionPage[] = [
   ...ABOUT_SECTION_PAGES,
   {
-    label: "Courses",
+    label: "Commerce",
     to: "/academics/courses",
     group: "Academics",
     subtitle: "Career-focused undergraduate programs in commerce, management, finance, IT, and entrepreneurship.",
     content: [
       "At Smt. Sudhatai Mandke College, we offer career-focused undergraduate programs designed to prepare students for success in academics, industry, and entrepreneurship.",
       "Affiliated with Savitribai Phule Pune University (SPPU), our courses combine strong theoretical foundations with practical learning, skill development, and placement opportunities.",
+      "Smt. Sudhatai Mandke College is proud to align its academic framework with the National Education Policy (NEP) 2020, introduced by the Government of India to make higher education more holistic, flexible, multidisciplinary, and skill-driven.",
       "Whether you aspire to build a career in commerce, management, finance, IT, or entrepreneurship, our programs provide the right platform to shape your future.",
     ],
-    highlights: ["B.Com", "SPPU Affiliated", "NEP 2020"],
+    highlights: [],
   },
   {
-    label: "NEP 2020",
-    to: "/academics/nep-2020",
+    label: "Mandke College Approach",
+    to: "/academics/mandke-college-approach",
     group: "Academics",
-    subtitle: "Mandke College aligns its academic framework with the National Education Policy 2020.",
-    content: [
-      "Smt. Sudhatai Mandke College is proud to align its academic framework with the National Education Policy (NEP) 2020, introduced by the Government of India to make higher education more holistic, flexible, multidisciplinary, and skill-driven.",
-      "By adopting NEP guidelines, we ensure that our students are prepared not only with academic knowledge but also with the 21st-century skills required for careers, entrepreneurship, and lifelong learning.",
-    ],
-    highlights: ["CBCS", "Multiple Entry & Exit", "Skill Development", "Multidisciplinary Learning", "Holistic Development"],
+    subtitle: "Building Competence & Mindset through a semester-wise, multidisciplinary student journey.",
+    content: [],
+    highlights: [],
   },
   // BBA and BCA section pages are temporarily disabled.
-  ...ACADEMICS_LINKS.filter((link) => !["/academics/courses", "/academics/nep-2020"].includes(link.to)).map((link) => ({
+  ...ACADEMICS_LINKS.filter((link) => !["/academics/courses", "/academics/mandke-college-approach"].includes(link.to)).map((link) => ({
     ...link,
     group: "Academics",
     subtitle:

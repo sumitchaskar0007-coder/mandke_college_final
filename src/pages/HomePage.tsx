@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { BookOpen, Calendar, Newspaper } from "lucide-react";
-import { api } from "../api/client";
+import { api, API_ENABLED } from "../api/client";
 import flyerImage from "../assets/images/flyer.jpeg";
 import layerImage from "../assets/images/layer-optimized.png";
 import radhikaImage from "../assets/images/radhika-optimized.jpg";
@@ -222,41 +222,49 @@ function HeroPromiseBox() {
 export function HomePage() {
   const { data: stats } = useQuery({
     queryKey: ["stats"],
+    enabled: API_ENABLED,
     queryFn: async () => (await api.get<Stats | null>("/stats")).data,
   });
 
   const { data: announcements } = useQuery({
     queryKey: ["announcements", "home"],
+    enabled: API_ENABLED,
     queryFn: async () => (await api.get<{ items: Announcement[] }>("/announcements?limit=3")).data,
   });
 
   const { data: blogs } = useQuery({
     queryKey: ["blogs", "home"],
+    enabled: API_ENABLED,
     queryFn: async () => (await api.get<{ items: BlogItem[] }>("/blogs?limit=3")).data,
   });
 
   const { data: events } = useQuery({
     queryKey: ["events"],
+    enabled: API_ENABLED,
     queryFn: async () => (await api.get<EventItem[]>("/events")).data,
   });
 
   const { data: testimonials } = useQuery({
     queryKey: ["testimonials"],
+    enabled: API_ENABLED,
     queryFn: async () => (await api.get<TestimonialRow[]>("/testimonials?limit=12")).data,
   });
 
   const { data: gallery } = useQuery({
     queryKey: ["gallery", "home"],
+    enabled: API_ENABLED,
     queryFn: async () => (await api.get<GalleryItem[]>("/gallery?limit=8")).data,
   });
 
   const { data: galleryCategories } = useQuery({
     queryKey: ["gallery", "categories"],
+    enabled: API_ENABLED,
     queryFn: async () => (await api.get<GalleryCategory[]>("/gallery/categories")).data,
   });
 
   const { data: contentRows } = useQuery({
     queryKey: ["content", "home"],
+    enabled: API_ENABLED,
     queryFn: async () => (await api.get<ContentBlock[]>("/content/home")).data,
   });
 

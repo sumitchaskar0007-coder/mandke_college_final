@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { BookOpen, Target, Award, Briefcase, CheckCircle, Compass, ExternalLink, Layers3, IndianRupee } from "lucide-react";
+import { BookOpen, Target, Award, Briefcase, CheckCircle, ExternalLink } from "lucide-react";
 import bcomStudentLearningImage from "../assets/images/bcom-student-learning.png";
 import courseDetailsPdf from "../assets/pdf/course_details.pdf?url";
 
@@ -37,21 +37,6 @@ const LEARNING_OUTCOMES = [
   "Communicate business ideas clearly to stakeholders",
   "Demonstrate ethical business practices and corporate governance",
   "Work effectively in teams and lead projects",
-];
-
-const STRUCTURED_PATHWAY = [
-  {
-    icon: Compass,
-    title: "Custom Clear Career Paths",
-  },
-  {
-    icon: Layers3,
-    title: "Multi Disciplinary Modules",
-  },
-  {
-    icon: IndianRupee,
-    title: "Paid Internships",
-  },
 ];
 
 export function CommercePage() {
@@ -185,93 +170,6 @@ export function CommercePage() {
         </div>
       </section>
 
-      {/* Structured Pathway */}
-      <section className="bg-primary py-6 text-white md:py-8">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <p className="text-sm font-bold uppercase tracking-widest text-accent">Structured Pathway</p>
-              <h2 className="mt-3 font-heading text-3xl font-bold md:text-4xl">More Than a Commerce Degree</h2>
-              <p className="mt-5 text-lg leading-relaxed text-slate-200">
-                Commerce academics, skill labs, placement guidance, student mentoring, and campus activities in one structured pathway.
-              </p>
-            </motion.div>
-
-            <div className="grid gap-4 sm:grid-cols-3">
-              {STRUCTURED_PATHWAY.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.08 }}
-                    className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-white">
-                      <Icon className="h-6 w-6" aria-hidden />
-                    </div>
-                    <h3 className="mt-5 font-heading text-lg font-bold">{item.title}</h3>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mandke Approach */}
-      <section className="bg-section py-6 md:py-8">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-bold uppercase tracking-widest text-accent">Our Approach</p>
-            <h2 className="mt-3 font-heading text-3xl font-bold text-primary md:text-4xl">Mandke College Approach</h2>
-            <p className="mt-4 text-lg text-textSecondary">
-              At Mandke College, B.COM stands for Building Competence &amp; Mindset. More than a traditional commerce degree, it is a
-              student-focused journey designed to develop practical skills, confidence, industry readiness, and the mindset needed to
-              succeed in the real world.
-            </p>
-          </div>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {[
-              {
-                emoji: "💼",
-                title: "Customised Pathways",
-                desc: "We believe every student is unique. Career pathways are tailored based on individual abilities, strengths, and interests.",
-              },
-              {
-                emoji: "🎯",
-                title: "Industry Ready",
-                desc: "Real-world projects, case studies, and internships ensure students develop practical skills valued by employers.",
-              },
-              {
-                emoji: "🌟",
-                title: "Better You Philosophy",
-                desc: "Our mission is helping every student become the best version of themselves — confident, capable, and purpose-driven.",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="rounded-2xl border border-borderSoft bg-white p-5 shadow-card"
-              >
-                <p className="text-4xl">{item.emoji}</p>
-                <h3 className="mt-4 font-heading text-xl font-bold text-primary">{item.title}</h3>
-                <p className="mt-2 text-textSecondary">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Course Description & Structure */}
       <section id="curriculum" className="mx-auto max-w-6xl px-4 py-6 md:py-8">
         <h2 className="font-heading text-3xl font-bold text-primary md:text-4xl">Course Structure</h2>
@@ -391,6 +289,14 @@ export function CommercePage() {
               View Current Time Table →
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-section py-8 md:py-10">
+        <div className="mx-auto max-w-6xl px-4 text-center">
+          <Link to="/academics/mandke-college-approach" className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-accent px-8 py-3.5 text-base font-bold text-white shadow-md transition hover:brightness-105">
+            Know More
+          </Link>
         </div>
       </section>
 

@@ -120,23 +120,23 @@ const MILES_SECTORS = [
 
 const MILES_FACTS = [
   {
-    eyebrow: "Authorised Tally Centre",
-    title: "One and only authorised Training & Assessment Centre for Tally in Kothrud",
+    eyebrow: "Industry-Relevant Training",
+    title: "Courses designed with industry experts to match current market requirements",
     icon: Calculator,
   },
   {
-    eyebrow: "MKCL Learning Centre",
-    title: "Authorised Learning Centre for MKCL's iLike courses with access to more than 200 courses",
+    eyebrow: "Hands-On Learning",
+    title: "Live projects, practical sessions, and real-world implementation",
     icon: GraduationCap,
   },
   {
-    eyebrow: "100% Job Assistance",
-    title: "Two-way advantage through our own Placement Cell and job portals of institutes we have an MoU with",
+    eyebrow: "Placement Assistance",
+    title: "Career guidance and job opportunities through industry collaborations",
     icon: BriefcaseBusiness,
   },
 ];
 
-const MILES_COURSES = ["Tally Prime 4.1", "All MKCL iLike Courses", "Cyber Security", "Campus to Corporate"];
+const MILES_COURSES = ["Tally Essentials", "Cyber Security", "No-Code AI", "Export Import", "AI and Data Science"];
 
 const REFERENCE_CO_CURRICULAR_ACTIVITIES = [
   {
@@ -496,13 +496,18 @@ const IDP_LIST_ITEMS = [
 
 const COURSE_PROGRAMS = [
   {
-    title: "Bachelor of Commerce (B.Com)",
-    linkLabel: "Know more about B.Com",
+    title: "Full Time B.Com",
+    linkLabel: "View B.Com programme",
     href: "/commerce",
     description:
       "A 3-year undergraduate program that develops core knowledge in accounting, finance, business law, and economics, with opportunities for higher studies and careers in corporate, banking, and entrepreneurship.",
   },
-  // BBA and BCA course cards are temporarily disabled.
+  {
+    title: "Distance Education",
+    linkLabel: "Explore Distance Education",
+    href: "/distance-education/courses-de",
+    description: "Distance Education B.Com, BA, M.Com and MA programmes through SPPU School of Open Learning.",
+  },
 ];
 
 const WHY_MANDKE = [
@@ -907,6 +912,26 @@ export function SectionContentPage() {
   const isSocialInitiatives = pathname === "/mhhf/social-initiatives";
   const isSkillDevelopment = pathname === "/mhhf/skill-development";
 
+  if (isAdmissionProcess) {
+    return (
+      <>
+        <Helmet><title>Admission Process - Mandke College</title></Helmet>
+        <section className="mx-auto max-w-6xl px-4 py-10 md:py-14">
+          <div className="rounded-btn border border-borderSoft bg-white p-6 shadow-card">
+            <h1 className="font-heading text-3xl font-bold text-primary">Admission Process for B.Com</h1>
+            <ul className="mt-6 space-y-3 text-sm leading-relaxed text-textSecondary">
+              {BCOM_ADMISSION_STEPS.map((step) => <li key={step}>- {step}</li>)}
+            </ul>
+            <h2 className="mt-8 font-heading text-xl font-bold text-primary">Documents to be Uploaded</h2>
+            <div className="mt-3 grid gap-2 sm:grid-cols-2">
+              {BCOM_DOCUMENTS.map((doc) => <div key={doc} className="rounded-btn bg-section px-3 py-2 text-sm font-semibold text-primary">{doc}</div>)}
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  }
+
   if (isCoCurricular) {
     return (
       <>
@@ -1196,6 +1221,10 @@ export function SectionContentPage() {
               <blockquote className="mt-8 border-l-4 border-white pl-5 font-heading text-2xl font-bold italic">
                 "Be MILES ahead of the Competition"
               </blockquote>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="https://www.mandkeskills.com/contact-for-skill-development" target="_blank" rel="noreferrer noopener" className="inline-flex min-h-[46px] items-center justify-center rounded-btn bg-white px-6 py-3 font-bold text-[#069ed8] shadow-md">Enquiry</a>
+                <a href="https://www.mandkeskills.com/" target="_blank" rel="noreferrer noopener" className="inline-flex min-h-[46px] items-center justify-center rounded-btn border-2 border-white px-6 py-3 font-bold text-white">Know more</a>
+              </div>
             </div>
           </div>
         </section>
@@ -1216,12 +1245,12 @@ export function SectionContentPage() {
                   </p>
                   <p>
                     To tackle this problem and make individuals "industry ready", MHHF started the Mandke Institute for
-                    Learning Employable Skills (MILES).
+                    Learning Employable Skills (MILES). MILES bridges academic knowledge with industry demands through
+                    practical training, expert guidance, live projects, and career support.
                   </p>
                   <p>
-                    MILES, along with its in-house courses, has collaborated with many institutions to provide a wide
-                    range of industry-relevant, skill-based courses where training is provided at low cost with
-                    assistance for job placement.
+                    MILES offers industry-aligned certification programmes in Finance, Technology, AI, Cyber Security,
+                    and Business Skills, with training designed around real job roles and employer needs.
                   </p>
                   <p>
                     These courses allow an individual to stand out from the crowd, gain self confidence, become self
@@ -1346,6 +1375,12 @@ export function SectionContentPage() {
             </div>
           </div>
         </section>
+        <div className="mx-auto max-w-6xl px-4 pb-12 text-center md:pb-16">
+          <div className="flex flex-wrap justify-center gap-3">
+            <a href="https://www.mandkeskills.com/contact-for-skill-development" target="_blank" rel="noreferrer noopener" className="inline-flex min-h-[46px] items-center justify-center rounded-btn bg-[#069ed8] px-6 py-3 font-bold text-white shadow-md">Enquiry</a>
+            <a href="https://www.mandkeskills.com/" target="_blank" rel="noreferrer noopener" className="inline-flex min-h-[46px] items-center justify-center rounded-btn border-2 border-[#069ed8] px-6 py-3 font-bold text-[#069ed8]">Know more</a>
+          </div>
+        </div>
       </>
     );
   }
@@ -1364,7 +1399,7 @@ export function SectionContentPage() {
         >
           <div>
             <h2 className="font-heading text-2xl font-bold text-primary">
-              {isFoundersMessage ? "Late Shri. Sudhir Mandke" : page.label}
+              {isFoundersMessage ? "Late Shri. Sudhir Mandke" : isCourses ? "Commerce Program at Mandke College" : page.label}
             </h2>
             <div className="mt-4 space-y-4 text-textSecondary">
               {page.content?.length ? (
@@ -1604,7 +1639,7 @@ export function SectionContentPage() {
             ) : null}
             {isCourses ? (
               <div className="mt-8">
-                <h3 className="font-heading text-2xl font-bold text-primary">Programs We Offer</h3>
+                <h3 id="programs-offered" className="font-heading text-2xl font-bold text-primary">Programs We Offer</h3>
                 <div className="mt-5 grid gap-5 lg:grid-cols-3">
                   {COURSE_PROGRAMS.map((program) => (
                     <article key={program.title} className="flex flex-col rounded-btn border border-borderSoft bg-section p-5">
@@ -1615,17 +1650,6 @@ export function SectionContentPage() {
                       </Link>
                     </article>
                   ))}
-                </div>
-
-                <div className="mt-10 rounded-btn border border-borderSoft bg-white p-5 shadow-sm">
-                  <h3 className="font-heading text-2xl font-bold text-primary">Why Choose Mandke College?</h3>
-                  <div className="mt-5 grid gap-3 md:grid-cols-2">
-                    {WHY_MANDKE.map((item) => (
-                      <div key={item} className="rounded-btn bg-section px-4 py-3 text-sm font-semibold text-primary">
-                        {item}
-                      </div>
-                    ))}
-                  </div>
                 </div>
 
                 <div className="mt-10">
@@ -1734,20 +1758,28 @@ export function SectionContentPage() {
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <a
-                    href="https://www.abc.gov.in/faq.php"
+                    href="https://www.abc.gov.in/faq"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex min-h-[44px] items-center justify-center rounded-btn bg-primary px-5 py-2.5 text-sm font-bold text-white"
                   >
-                    ABC FAQ
+                    ABC FAQ’s
                   </a>
                   <a
-                    href="https://www.abc.gov.in/"
+                    href="https://www.abc.gov.in/resources"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex min-h-[44px] items-center justify-center rounded-btn border-2 border-primary px-5 py-2.5 text-sm font-bold text-primary"
                   >
-                    Create ABC ID Tutorial
+                    ABC ID Tutorial
+                  </a>
+                  <a
+                    href="https://www.digilocker.gov.in/web/dashboard/issuers/010212"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-[44px] items-center justify-center rounded-btn border-2 border-primary px-5 py-2.5 text-sm font-bold text-primary"
+                  >
+                    Create ABC ID using DigiLocker
                   </a>
                 </div>
               </div>

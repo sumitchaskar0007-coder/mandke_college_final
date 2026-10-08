@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
-import { api } from "../api/client";
+import { api, API_ENABLED } from "../api/client";
 
 type Post = {
   title: string;
@@ -18,7 +18,7 @@ export function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
   const { data, isLoading, isError } = useQuery({
     queryKey: ["blog", slug],
-    enabled: !!slug,
+    enabled: API_ENABLED && !!slug,
     queryFn: async () => (await api.get<Post>(`/blogs/slug/${slug}`)).data,
   });
 

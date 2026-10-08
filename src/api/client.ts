@@ -1,5 +1,6 @@
 import axios from "axios";
 
+export const API_ENABLED = Boolean(import.meta.env.VITE_API_BASE_URL);
 const base = import.meta.env.VITE_API_BASE_URL || "/api";
 
 export const api = axios.create({

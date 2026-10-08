@@ -1,10 +1,11 @@
-import { Suspense, lazy } from "react";
+import { Component, lazy, type ErrorInfo, type ReactNode } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { MarketingLayout } from "./components/layout/MarketingLayout";
 
 const HomePage = lazy(() => import("./pages/HomePage").then((m) => ({ default: m.HomePage })));
 const AboutPage = lazy(() => import("./pages/AboutPage").then((m) => ({ default: m.AboutPage })));
 const CommercePage = lazy(() => import("./pages/CommercePage").then((m) => ({ default: m.CommercePage })));
+const MandkeApproachPage = lazy(() => import("./pages/MandkeApproachPage").then((m) => ({ default: m.MandkeApproachPage })));
 // BBA and BCA pages are temporarily disabled.
 // const BbaPage = lazy(() => import("./pages/BbaPage").then((m) => ({ default: m.BbaPage })));
 // const BcaPage = lazy(() => import("./pages/BcaPage").then((m) => ({ default: m.BcaPage })));
@@ -28,8 +29,14 @@ const StakeholdersPage = lazy(() => import("./pages/SimpleContentPage").then((m)
 const MHHFPage = lazy(() => import("./pages/SimpleContentPage").then((m) => ({ default: m.MHHFPage })));
 const SectionContentPage = lazy(() => import("./pages/SectionContentPage").then((m) => ({ default: m.SectionContentPage })));
 
-function PageLoader() {
-  return <div className="flex min-h-[40vh] items-center justify-center text-textSecondary">Loading…</div>;
+class AppErrorBoundary extends Component<{ children: ReactNode }, { error: Error | null }> {
+  state = { error: null as Error | null };
+  static getDerivedStateFromError(error: Error) { return { error }; }
+  componentDidCatch(error: Error, info: ErrorInfo) { console.error("Mandke College render error", error, info); }
+  render() {
+    if (!this.state.error) return this.props.children;
+    return <main className="mx-auto max-w-2xl px-6 py-24 text-center"><h1 className="font-heading text-3xl font-bold text-primary">Page could not load</h1><p className="mt-4 text-textSecondary">Refresh the page or restart the development server.</p><pre className="mt-6 overflow-auto rounded-btn bg-slate-100 p-4 text-left text-xs text-red-700">{this.state.error.message}</pre></main>;
+  }
 }
 
 function NotFound() {
@@ -42,7 +49,7 @@ function NotFound() {
 
 export default function App() {
   return (
-    <Suspense fallback={<PageLoader />}>
+    <AppErrorBoundary>
       <Routes>
         <Route element={<MarketingLayout />}>
           <Route path="/" element={<HomePage />} />
@@ -50,6 +57,7 @@ export default function App() {
           <Route path="/about/faculty" element={<AboutFacultyPage />} />
           <Route path="/about/:slug" element={<SectionContentPage />} />
           <Route path="/academics" element={<Navigate to="/academics/courses" replace />} />
+          <Route path="/academics/mandke-college-approach" element={<MandkeApproachPage />} />
           {/* BBA and BCA routes are temporarily disabled. */}
           <Route path="/academics/:slug" element={<SectionContentPage />} />
           <Route path="/commerce" element={<CommercePage />} />
@@ -76,6 +84,6 @@ export default function App() {
         </Route>
 
       </Routes>
-    </Suspense>
+    </AppErrorBoundary>
   );
 }

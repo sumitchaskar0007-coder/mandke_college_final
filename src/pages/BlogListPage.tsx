@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { api } from "../api/client";
+import { api, API_ENABLED } from "../api/client";
 
 type BlogItem = { _id: string; title: string; slug: string; excerpt?: string; category?: string; publishedAt?: string; coverImage?: string };
 
@@ -12,6 +12,7 @@ export function BlogListPage() {
 
   const { data, isLoading } = useQuery({
     queryKey: ["blogs", category, search],
+    enabled: API_ENABLED,
     queryFn: async () => {
       const params = new URLSearchParams({ limit: "12" });
       if (category) params.set("category", category);

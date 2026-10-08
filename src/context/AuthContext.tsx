@@ -7,7 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { api } from "../api/client";
+import { api, API_ENABLED } from "../api/client";
 
 type AdminUser = { id: string; email: string; name?: string; role: string };
 
@@ -26,6 +26,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   const refresh = useCallback(async () => {
+    if (!API_ENABLED) {
+      setAdmin(null);
+      setLoading(false);
+      return;
+    }
     try {
       const { data } = await api.get<{ admin: AdminUser | null }>("/auth/me");
       setAdmin(data.admin ?? null);
