@@ -49,7 +49,7 @@ export function AnnouncementsPage() {
             <li key={a._id} className="rounded-card border border-borderSoft bg-white p-5 shadow-card">
               <div className="flex flex-wrap items-center gap-2 text-sm">
                 {a.isPinned ? <span aria-hidden>📌</span> : null}
-                <span className="rounded-badge bg-section px-2 py-0.5 text-xs font-semibold capitalize text-primary">
+                <span className="text-xs font-semibold capitalize text-accent">
                   {a.type}
                 </span>
                 {a.createdAt ? (

@@ -1,21 +1,23 @@
 import { CheckCircle2, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+const ADMISSION_CLOSES_AT = Date.parse("2026-10-16T00:00:00+05:30");
 
 export function AdmissionsPopup() {
   const [open, setOpen] = useState(false);
-  const hasShownOnThisLoad = useRef(false);
 
   useEffect(() => {
-    // Show once per full browser load or refresh; route changes do not reopen it.
-    if (hasShownOnThisLoad.current) return;
-    hasShownOnThisLoad.current = true;
-    const timer = window.setTimeout(() => setOpen(true), 700);
+    if (Date.now() >= ADMISSION_CLOSES_AT) return;
+    const timer = window.setTimeout(() => {
+      if (Date.now() < ADMISSION_CLOSES_AT) setOpen(true);
+    }, 700);
     return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     if (!open) return;
+    const expiryTimer = window.setTimeout(() => setOpen(false), Math.max(0, ADMISSION_CLOSES_AT - Date.now()));
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") closePopup();
@@ -25,6 +27,7 @@ export function AdmissionsPopup() {
     window.addEventListener("keydown", onKeyDown);
 
     return () => {
+      window.clearTimeout(expiryTimer);
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKeyDown);
     };

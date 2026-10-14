@@ -44,7 +44,7 @@ const COURSES: Course[] = [
     rating: 4.9,
     reviews: 240,
     highlights: ["Soft skills studio", "Debate & culture", "Sports & wellness"],
-    href: "/activities",
+    href: "/activities/co-curricular",
     icon: LineChart,
     accent: "orange",
   },
@@ -53,7 +53,6 @@ const COURSES: Course[] = [
 const QUICK_LINKS = [
   { label: "Admission", href: "/admissions" },
   { label: "Key Features", href: "/commerce" },
-  { label: "Fee Structure", href: "/commerce" },
   { label: "Faculty", href: "/about/faculty" },
 ];
 
@@ -155,13 +154,6 @@ export function CourseCards() {
             className="inline-flex min-h-[48px] min-w-[160px] items-center justify-center rounded-btn bg-accent px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-accent/25 transition hover:opacity-95"
           >
             Apply now
-          </Link>
-          <Link
-            to="/commerce"
-            className="inline-flex min-h-[48px] min-w-[170px] items-center justify-center rounded-btn border-2 border-primary bg-white px-8 py-3.5 text-base font-bold text-primary transition hover:bg-section"
-          >
-            <ClipboardList className="mr-2 h-5 w-5" aria-hidden />
-            Compare pathways
           </Link>
         </div>
       </div>

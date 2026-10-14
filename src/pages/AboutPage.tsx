@@ -1,12 +1,10 @@
+import { EmphasizedText } from "../components/content/EmphasizedText";
+import { MhhfSection } from "./MhhfSection";
 import { Helmet } from "react-helmet-async";
 import { BookOpen, CheckCircle2, HeartHandshake, Target, Users } from "lucide-react";
 import buildingImage from "../assets/images/building-optimized.jpg";
 import founderImage from "../assets/images/founder-optimized.jpg";
 import radhikaImage from "../assets/images/radhika-optimized.jpg";
-import socialCommunityServiceImage from "../assets/images/social-community-service.jpg";
-import socialNoPlasticImage from "../assets/images/social-no-plastic.gif";
-import socialTrafficSafetyImage from "../assets/images/social-traffic-safety.jpg";
-import socialTreePlantationImage from "../assets/images/social-tree-plantation.jpg";
 import { ABOUT_SECTION_PAGES } from "../data/navigation";
 import { FacultyDirectory } from "./AboutFacultyPage";
 
@@ -47,15 +45,6 @@ const CORE_VALUES = [
   "To create self-assured global citizens who will be confident and highly eligible.",
   "To encourage team work, hard work and integrity in students by preparing them to take up jobs or venture into self-employment.",
   "To provide students with an environment which is conducive for overall development of their personality.",
-];
-
-const MHHF_INITIATIVES = [
-  { title: "Smt. Sudhatai Mandke College of Commerce", text: "Founded in 2002 in Kothrud, Pune, this senior college offers undergraduate B.Com programmes and is affiliated with Savitribai Phule Pune University.", image: buildingImage },
-  { title: "Centre for Distance Education", text: "Started in 2022, the approved SPPU School of Open Learning study centre offers Graduate and Post-Graduate courses in Commerce and Arts: B.Com, M.Com, BA and MA.", image: socialCommunityServiceImage },
-  { title: "Jana Loka Kalyan Samiti", text: "Provides business guidance and networking support for entrepreneurship.", image: socialTrafficSafetyImage },
-  { title: "Paud Sakhi Manch", text: "Employs over 35 women from Paud gaon to manufacture paper bags and reduce plastic waste.", image: socialNoPlasticImage },
-  { title: "Tree Plantation", text: "MHHF has conducted several drives and planted more than 5,000 trees across Pune.", image: socialTreePlantationImage },
-  { title: "Civic Drives", text: "Volunteer programmes support local cleanliness, traffic safety education, and festival crowd assistance, including Ganpati Visarjan and Pandharpur Palkhi.", image: socialTrafficSafetyImage },
 ];
 
 function TextBlock({
@@ -114,7 +103,7 @@ export function AboutPage() {
       <div id="about-college" className="scroll-mt-40">
         <TextBlock title="About Smt. Sudhatai Mandke College of Commerce">
           {COLLEGE_PARAGRAPHS.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}><EmphasizedText text={paragraph} /></p>
           ))}
         </TextBlock>
       </div>
@@ -122,7 +111,7 @@ export function AboutPage() {
       <div id="smt-sudhatai-mandke" className="scroll-mt-40">
         <TextBlock title="Smt. Sudhatai Mandke" role="Teacher | Inspirator | Philanthropist | Humanitarian">
           {SUDHATAI_PARAGRAPHS.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}><EmphasizedText text={paragraph} /></p>
           ))}
         </TextBlock>
       </div>
@@ -134,7 +123,7 @@ export function AboutPage() {
             <p className="mt-2 text-sm font-bold uppercase tracking-widest text-accent">Founder</p>
             <div className="mt-4 space-y-3 text-base leading-relaxed text-textSecondary md:text-lg">
               {FOUNDER_PARAGRAPHS.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+                <p key={paragraph}><EmphasizedText text={paragraph} /></p>
               ))}
             </div>
           </div>
@@ -144,27 +133,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section id="mhhf" className="scroll-mt-40 bg-section py-8 md:py-12">
-        <div className="mx-auto max-w-6xl px-4">
-          <p className="text-sm font-bold uppercase tracking-widest text-accent">About the Foundation</p>
-          <h2 className="mt-2 font-heading text-3xl font-bold text-primary md:text-4xl">Mandke Human Happiness Foundation</h2>
-          <p className="mt-4 max-w-4xl text-base leading-relaxed text-textSecondary md:text-lg">
-            The Mandke Human Happiness Foundation (MHHF) is a charitable trust established in 1996 in Pune, Maharashtra, by the Sudhir Mandke Group to promote need-based education, skill development, and community welfare. To work towards its aim of Making Society Better, the trust carries out initiatives through the following institutions and programmes.
-          </p>
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {MHHF_INITIATIVES.map((initiative) => (
-              <article key={initiative.title} className="overflow-hidden rounded-btn border border-borderSoft bg-white shadow-card">
-                <img src={initiative.image} alt={initiative.title} className="h-44 w-full object-cover" loading="lazy" />
-                <div className="p-5"><h3 className="font-heading text-xl font-bold text-primary">{initiative.title}</h3><p className="mt-3 text-sm leading-relaxed text-textSecondary">{initiative.text}</p></div>
-              </article>
-            ))}
-          </div>
-          <div className="mt-8 rounded-btn border border-borderSoft bg-white p-5 shadow-card">
-            <h3 className="font-heading text-xl font-bold text-primary">Contact Information</h3>
-            <div className="mt-3 grid gap-2 text-textSecondary md:grid-cols-3"><p>Mandke House, Model Colony, Pune 411016</p><p><a href="tel:+919922965503" className="hover:text-accent">+91 99229 65503</a></p><p><a href="mailto:info@sudhirmandke.com" className="hover:text-accent">info@sudhirmandke.com</a></p></div>
-          </div>
-        </div>
-      </section>
+      <MhhfSection />
 
       <section id="managing-director" className="mx-auto max-w-6xl scroll-mt-40 px-4 py-5 md:py-6">
         <div className="grid gap-6 rounded-btn border border-borderSoft bg-white p-5 shadow-card md:p-6 lg:grid-cols-[0.85fr_1.35fr] lg:items-start">
@@ -176,7 +145,7 @@ export function AboutPage() {
             <p className="mt-2 text-sm font-bold uppercase tracking-widest text-accent">Managing Director</p>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-textSecondary md:text-lg">
               {RADHIKA_PARAGRAPHS.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+                <p key={paragraph}><EmphasizedText text={paragraph} /></p>
               ))}
             </div>
           </div>
@@ -186,7 +155,7 @@ export function AboutPage() {
       <div id="principals-foreword" className="scroll-mt-40">
         <TextBlock title="Principal's Foreword" label="Dear Students">
           {FOREWORD_PARAGRAPHS.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}><EmphasizedText text={paragraph} /></p>
           ))}
           <div className="pt-3 font-semibold text-primary">
             <p>Sincerely,</p>
@@ -264,17 +233,8 @@ export function AboutPage() {
           <div className="rounded-btn border border-borderSoft bg-white p-5 shadow-card md:p-6">
             <h2 className="font-heading text-3xl font-bold text-primary md:text-4xl">{page.label}</h2>
             <div className="mt-4 space-y-3 text-base leading-relaxed text-textSecondary md:text-lg">
-              {page.content?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              {page.content?.map((paragraph) => <p key={paragraph}><EmphasizedText text={paragraph} /></p>)}
             </div>
-            {page.highlights?.length ? (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {page.highlights.map((highlight) => (
-                  <span key={highlight} className="rounded-btn bg-section px-3 py-1.5 text-sm font-semibold text-primary">
-                    {highlight}
-                  </span>
-                ))}
-              </div>
-            ) : null}
           </div>
         </section>
       ))}

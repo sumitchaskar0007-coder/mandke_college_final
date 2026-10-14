@@ -39,6 +39,7 @@ const LEARNING_OUTCOMES = [
   "Work effectively in teams and lead projects",
 ];
 
+
 export function CommercePage() {
   return (
     <>
@@ -170,6 +171,57 @@ export function CommercePage() {
         </div>
       </section>
 
+      {/* Mandke Approach */}
+      <section className="bg-section py-6 md:py-8">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-bold uppercase tracking-widest text-accent">Our Approach</p>
+            <h2 className="mt-3 font-heading text-3xl font-bold text-primary md:text-4xl">Mandke College Approach</h2>
+            <p className="mt-4 text-lg text-textSecondary">
+              At Mandke College, B.COM stands for Building Competence &amp; Mindset. More than a traditional commerce degree, it is a
+              student-focused journey designed to develop practical skills, confidence, industry readiness, and the mindset needed to
+              succeed in the real world.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                emoji: "💼",
+                title: "Customised Pathways",
+                desc: "We believe every student is unique. Career pathways are tailored based on individual abilities, strengths, and interests.",
+              },
+              {
+                emoji: "🎯",
+                title: "Industry Ready",
+                desc: "Real-world projects, case studies, and internships ensure students develop practical skills valued by employers.",
+              },
+              {
+                emoji: "🌟",
+                title: "Better You Philosophy",
+                desc: "Our mission is helping every student become the best version of themselves — confident, capable, and purpose-driven.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="rounded-2xl border border-borderSoft bg-white p-5 shadow-card"
+              >
+                <p className="text-4xl">{item.emoji}</p>
+                <h3 className="mt-4 font-heading text-xl font-bold text-primary">{item.title}</h3>
+                <p className="mt-2 text-textSecondary">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="bg-section pb-8 text-center">
+        <Link to="/academics/mandke-college-approach" className="inline-flex rounded-btn bg-accent px-6 py-3 font-bold text-white">Know More</Link>
+      </div>
+
       {/* Course Description & Structure */}
       <section id="curriculum" className="mx-auto max-w-6xl px-4 py-6 md:py-8">
         <h2 className="font-heading text-3xl font-bold text-primary md:text-4xl">Course Structure</h2>
@@ -289,14 +341,6 @@ export function CommercePage() {
               View Current Time Table →
             </Link>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-section py-8 md:py-10">
-        <div className="mx-auto max-w-6xl px-4 text-center">
-          <Link to="/academics/mandke-college-approach" className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-accent px-8 py-3.5 text-base font-bold text-white shadow-md transition hover:brightness-105">
-            Know More
-          </Link>
         </div>
       </section>
 

@@ -1,5 +1,5 @@
-import { Outlet, Link } from "react-router-dom";
 import { Suspense } from "react";
+import { Outlet, Link } from "react-router-dom";
 import { Marquee } from "./Marquee";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
@@ -24,9 +24,7 @@ export function MarketingLayout() {
       <ScrollToTop />
       <AdmissionsPopup />
       <main id="main-content" className="pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:pb-0">
-        <Suspense fallback={<div role="status" className="flex min-h-[40vh] items-center justify-center text-textSecondary">Loading page…</div>}>
-          <Outlet />
-        </Suspense>
+        <Suspense fallback={<div role="status" className="min-h-[40vh] p-10 text-center">Loading page…</div>}><Outlet /></Suspense>
       </main>
       <Footer />
       <Link

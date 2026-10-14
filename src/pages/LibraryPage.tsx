@@ -9,7 +9,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import buildingImage from "../assets/images/building-optimized.jpg";
-import classroomImage from "../assets/images/class.jpeg";
+import classroomImage from "../assets/images/Class.jpeg";
 import computerLabImage from "../assets/images/clab.jpeg";
 import gymImage from "../assets/images/gym.png";
 import libraryImage from "../assets/images/library.jpeg";

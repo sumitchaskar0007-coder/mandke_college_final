@@ -1,3 +1,5 @@
+import { EmphasizedText } from "../components/content/EmphasizedText";
+import { DistanceEducationContent } from "./DistanceEducationContent";
 import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
@@ -497,17 +499,12 @@ const IDP_LIST_ITEMS = [
 const COURSE_PROGRAMS = [
   {
     title: "Full Time B.Com",
-    linkLabel: "View B.Com programme",
+    linkLabel: "Know more about B.Com",
     href: "/commerce",
     description:
       "A 3-year undergraduate program that develops core knowledge in accounting, finance, business law, and economics, with opportunities for higher studies and careers in corporate, banking, and entrepreneurship.",
   },
-  {
-    title: "Distance Education",
-    linkLabel: "Explore Distance Education",
-    href: "/distance-education/courses-de",
-    description: "Distance Education B.Com, BA, M.Com and MA programmes through SPPU School of Open Learning.",
-  },
+  { title: "Distance Education B.Com, BA, M.Com, MA", linkLabel: "Explore Distance Education", href: "/distance-education/courses-de", description: "Graduate and postgraduate programmes in Commerce and Arts through SPPU School of Open Learning." },
 ];
 
 const WHY_MANDKE = [
@@ -606,7 +603,6 @@ const DISTANCE_COURSES = [
   },
 ];
 
-const DISTANCE_TAGS = ["Remote Working", "Information Technology"];
 
 const DISTANCE_ADMISSION_STEPS = [
   "Register Yourself as Student of Digital University",
@@ -880,6 +876,10 @@ const COLLEGE_EVENT_REPORTS = [
 
 export function SectionContentPage() {
   const { pathname } = useLocation();
+  if (["/distance-education/about-de", "/distance-education/courses-de", "/distance-education/admission-de"].includes(pathname)) {
+    const section = pathname.endsWith("courses-de") ? "courses" : pathname.endsWith("admission-de") ? "admission" : "all";
+    return <DistanceEducationContent section={section} />;
+  }
   const page = SECTION_PAGES.find((entry) => entry.to === pathname);
 
   if (!page) {
@@ -913,23 +913,13 @@ export function SectionContentPage() {
   const isSkillDevelopment = pathname === "/mhhf/skill-development";
 
   if (isAdmissionProcess) {
-    return (
-      <>
-        <Helmet><title>Admission Process - Mandke College</title></Helmet>
-        <section className="mx-auto max-w-6xl px-4 py-10 md:py-14">
-          <div className="rounded-btn border border-borderSoft bg-white p-6 shadow-card">
-            <h1 className="font-heading text-3xl font-bold text-primary">Admission Process for B.Com</h1>
-            <ul className="mt-6 space-y-3 text-sm leading-relaxed text-textSecondary">
-              {BCOM_ADMISSION_STEPS.map((step) => <li key={step}>- {step}</li>)}
-            </ul>
-            <h2 className="mt-8 font-heading text-xl font-bold text-primary">Documents to be Uploaded</h2>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2">
-              {BCOM_DOCUMENTS.map((doc) => <div key={doc} className="rounded-btn bg-section px-3 py-2 text-sm font-semibold text-primary">{doc}</div>)}
-            </div>
-          </div>
-        </section>
-      </>
-    );
+    return <><Helmet><title>Admission Process - Mandke College</title></Helmet>
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <h1 className="font-heading text-3xl font-bold text-primary">Admission Process for B.Com</h1>
+        <ol className="mt-6 list-decimal space-y-4 pl-6 leading-relaxed text-textSecondary">{BCOM_ADMISSION_STEPS.map(step => <li key={step}>{step}</li>)}</ol>
+        <h2 className="mt-8 font-heading text-xl font-bold text-primary">Documents to be Uploaded</h2>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">{BCOM_DOCUMENTS.map(doc => <li key={doc} className="rounded-btn bg-section p-3 text-primary">{doc}</li>)}</ul>
+      </section></>;
   }
 
   if (isCoCurricular) {
@@ -1220,11 +1210,7 @@ export function SectionContentPage() {
               <p className="mt-5 text-xl font-semibold text-white/90">(MILES)</p>
               <blockquote className="mt-8 border-l-4 border-white pl-5 font-heading text-2xl font-bold italic">
                 "Be MILES ahead of the Competition"
-              </blockquote>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="https://www.mandkeskills.com/contact-for-skill-development" target="_blank" rel="noreferrer noopener" className="inline-flex min-h-[46px] items-center justify-center rounded-btn bg-white px-6 py-3 font-bold text-[#069ed8] shadow-md">Enquiry</a>
-                <a href="https://www.mandkeskills.com/" target="_blank" rel="noreferrer noopener" className="inline-flex min-h-[46px] items-center justify-center rounded-btn border-2 border-white px-6 py-3 font-bold text-white">Know more</a>
-              </div>
+              </blockquote><div className="mt-8 flex flex-wrap justify-center gap-3"><a href="https://www.mandkeskills.com/contact-for-skill-development" target="_blank" rel="noreferrer" className="rounded-btn bg-accent px-6 py-3 font-bold text-white shadow-card hover:brightness-110">Enquiry</a><a href="https://www.mandkeskills.com/" target="_blank" rel="noreferrer" className="rounded-btn bg-primary px-6 py-3 font-bold text-white shadow-card">Know more</a></div>
             </div>
           </div>
         </section>
@@ -1245,12 +1231,11 @@ export function SectionContentPage() {
                   </p>
                   <p>
                     To tackle this problem and make individuals "industry ready", MHHF started the Mandke Institute for
-                    Learning Employable Skills (MILES). MILES bridges academic knowledge with industry demands through
-                    practical training, expert guidance, live projects, and career support.
+                    Learning Employable Skills (MILES).
                   </p>
                   <p>
                     MILES offers industry-aligned certification programmes in Finance, Technology, AI, Cyber Security,
-                    and Business Skills, with training designed around real job roles and employer needs.
+                    and Business Skills with practical training and career guidance.
                   </p>
                   <p>
                     These courses allow an individual to stand out from the crowd, gain self confidence, become self
@@ -1329,9 +1314,9 @@ export function SectionContentPage() {
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-300">For More Information</p>
               <h2 className="mt-3 font-heading text-3xl font-bold">Connect with Mandke Skills</h2>
               <div className="mt-7 grid gap-3">
-                <a href="tel:+919577060606" className="flex items-center gap-3 rounded-btn bg-white/10 px-4 py-3">
+                <a href="tel:+919112220491" className="flex items-center gap-3 rounded-btn bg-white/10 px-4 py-3">
                   <Phone className="h-5 w-5 text-cyan-300" aria-hidden />
-                  <span className="font-semibold">9577060606</span>
+                  <span className="font-semibold">9112220491</span>
                 </a>
                 <a
                   href="https://www.mandkeskills.com"
@@ -1375,12 +1360,7 @@ export function SectionContentPage() {
             </div>
           </div>
         </section>
-        <div className="mx-auto max-w-6xl px-4 pb-12 text-center md:pb-16">
-          <div className="flex flex-wrap justify-center gap-3">
-            <a href="https://www.mandkeskills.com/contact-for-skill-development" target="_blank" rel="noreferrer noopener" className="inline-flex min-h-[46px] items-center justify-center rounded-btn bg-[#069ed8] px-6 py-3 font-bold text-white shadow-md">Enquiry</a>
-            <a href="https://www.mandkeskills.com/" target="_blank" rel="noreferrer noopener" className="inline-flex min-h-[46px] items-center justify-center rounded-btn border-2 border-[#069ed8] px-6 py-3 font-bold text-[#069ed8]">Know more</a>
-          </div>
-        </div>
+        <div className="mx-auto max-w-6xl px-4 pb-12"><div className="mt-8 flex flex-wrap justify-center gap-3"><a href="https://www.mandkeskills.com/contact-for-skill-development" target="_blank" rel="noreferrer" className="rounded-btn bg-accent px-6 py-3 font-bold text-white shadow-card hover:brightness-110">Enquiry</a><a href="https://www.mandkeskills.com/" target="_blank" rel="noreferrer" className="rounded-btn bg-primary px-6 py-3 font-bold text-white shadow-card">Know more</a></div></div>
       </>
     );
   }
@@ -1403,20 +1383,11 @@ export function SectionContentPage() {
             </h2>
             <div className="mt-4 space-y-4 text-textSecondary">
               {page.content?.length ? (
-                page.content.map((paragraph) => <p key={paragraph}>{paragraph}</p>)
+                page.content.map((paragraph) => <p key={paragraph}><EmphasizedText text={paragraph} /></p>)
               ) : (
                 <p>Content, notices, PDFs, forms, and detailed information for this section can be published here.</p>
               )}
             </div>
-            {page.highlights?.length ? (
-              <div className="mt-6 flex flex-wrap gap-2">
-                {page.highlights.map((highlight) => (
-                  <span key={highlight} className="rounded-btn bg-section px-3 py-1.5 text-sm font-semibold text-primary">
-                    {highlight}
-                  </span>
-                ))}
-              </div>
-            ) : null}
             {isStudentSatisfactionSurvey || isFeedbackReport ? (
               <div className="mt-8 rounded-btn border border-borderSoft bg-section p-5">
                 <h3 className="font-heading text-2xl font-bold text-primary">Student Feedback PDFs</h3>
@@ -1639,13 +1610,13 @@ export function SectionContentPage() {
             ) : null}
             {isCourses ? (
               <div className="mt-8">
-                <h3 id="programs-offered" className="font-heading text-2xl font-bold text-primary">Programs We Offer</h3>
+                <h3 id="programs-offered" className="scroll-mt-40 font-heading text-2xl font-bold text-primary">Programs We Offer</h3>
                 <div className="mt-5 grid gap-5 lg:grid-cols-3">
                   {COURSE_PROGRAMS.map((program) => (
                     <article key={program.title} className="flex flex-col rounded-btn border border-borderSoft bg-section p-5">
                       <h4 className="font-heading text-xl font-bold text-primary">{program.title}</h4>
                       <p className="mt-3 flex-1 text-sm leading-relaxed text-textSecondary">{program.description}</p>
-                      <Link to={program.href} className="mt-5 text-sm font-bold text-accent hover:underline">
+                      <Link to={program.href} className="mt-5 inline-flex min-h-[48px] items-center justify-center self-start rounded-btn bg-accent px-5 py-3 text-sm font-bold text-white shadow-card hover:brightness-110">
                         {program.linkLabel}
                       </Link>
                     </article>
@@ -1723,28 +1694,7 @@ export function SectionContentPage() {
                 </div>
               </div>
             ) : null}
-            {isAdmissionProcess ? (
-              <div className="mt-8">
-                <div className="mt-8">
-                  <section className="rounded-btn border border-borderSoft bg-white p-5 shadow-sm">
-                    <h3 className="font-heading text-2xl font-bold text-primary">Admission Process for B.Com</h3>
-                    <ul className="mt-4 space-y-3 text-sm leading-relaxed text-textSecondary">
-                      {BCOM_ADMISSION_STEPS.map((step) => (
-                        <li key={step}>- {step}</li>
-                      ))}
-                    </ul>
-                    <h4 className="mt-6 font-heading text-lg font-bold text-primary">Documents to be Uploaded</h4>
-                    <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                      {BCOM_DOCUMENTS.map((doc) => (
-                        <div key={doc} className="rounded-btn bg-section px-3 py-2 text-sm font-semibold text-primary">
-                          {doc}
-                        </div>
-                      ))}
-                    </div>
-                  </section>
-                </div>
-              </div>
-            ) : null}
+
             {isAcademicBankCredits ? (
               <div className="mt-8 rounded-btn border border-borderSoft bg-section p-5">
                 <h3 className="font-heading text-2xl font-bold text-primary">Academic Bank of Credits (ABC)</h3>
@@ -1773,14 +1723,7 @@ export function SectionContentPage() {
                   >
                     ABC ID Tutorial
                   </a>
-                  <a
-                    href="https://www.digilocker.gov.in/web/dashboard/issuers/010212"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-[44px] items-center justify-center rounded-btn border-2 border-primary px-5 py-2.5 text-sm font-bold text-primary"
-                  >
-                    Create ABC ID using DigiLocker
-                  </a>
+                  <a href="https://www.digilocker.gov.in/web/dashboard/issuers/010212" target="_blank" rel="noreferrer" className="inline-flex min-h-[44px] items-center justify-center rounded-btn bg-primary px-5 py-2.5 text-sm font-bold text-white">Create ABC ID using DigiLocker</a>
                 </div>
               </div>
             ) : null}
@@ -1805,266 +1748,9 @@ export function SectionContentPage() {
                 </div>
               </div>
             ) : null}
-            {isAboutDistanceEducation ? (
-              <div className="mt-8">
-                <div className="rounded-btn border border-borderSoft bg-section p-5">
-                  <p className="text-sm font-bold uppercase tracking-widest text-accent">Approved Centre</p>
-                  <h3 className="mt-2 font-heading text-2xl font-bold text-primary">
-                    SPPU School of Open Learning (Distance Education)
-                  </h3>
-                  <p className="mt-4 leading-relaxed text-textSecondary">
-                    Savitribai Phule Pune University is popularly known as the Oxford of the East and has graded
-                    autonomy status by UGC. Study centres work as caretakers of learners and provide essential personal
-                    contact under the guidelines of the School of Open Learning.
-                  </p>
-                </div>
-                <div className="mt-8">
-                  <h3 className="font-heading text-2xl font-bold text-primary">Advantages</h3>
-                  <div className="mt-5 grid gap-3 md:grid-cols-2">
-                    {DISTANCE_ADVANTAGES.map((advantage) => (
-                      <div key={advantage} className="rounded-btn border border-borderSoft bg-white px-4 py-3 text-sm font-semibold text-primary shadow-sm">
-                        {advantage}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-8 rounded-btn border border-borderSoft bg-section p-5">
-                  <p className="text-sm font-bold uppercase tracking-widest text-accent">Courses offered at</p>
-                  <h3 className="mt-2 font-heading text-2xl font-bold text-primary">
-                    SMC - Centre for Distance Education
-                  </h3>
-                  <p className="mt-4 leading-relaxed text-textSecondary">
-                    Location and age is no bar for obtaining a Graduation or Post Graduation Degree at your own time.
-                    Open and Distance Learning (ODL) is flexible in regard to modalities and timing of teaching and
-                    learning as also admission criteria, without compromising necessary quality considerations.
-                  </p>
-                  <p className="mt-3 leading-relaxed text-textSecondary">
-                    The School of Open Learning offers Undergraduate/Postgraduate Degree courses in Arts and Commerce.
-                    The medium of instruction is Marathi and English.
-                  </p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {DISTANCE_TAGS.map((tag) => (
-                      <span key={tag} className="rounded-btn bg-white px-3 py-1.5 text-sm font-semibold text-primary shadow-sm">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                  {DISTANCE_COURSES.map((course) => (
-                    <a
-                      key={course.title}
-                      href={course.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-btn border border-borderSoft bg-white p-4 text-sm font-bold text-primary shadow-sm transition hover:border-accent hover:text-accent"
-                    >
-                      {course.title}
-                      <span className="mt-2 block text-xs font-bold text-accent">Prospectus PDF (Click Here)</span>
-                    </a>
-                  ))}
-                </div>
-                <div className="mt-8 rounded-btn border border-borderSoft bg-section p-5">
-                  <h3 className="font-heading text-xl font-bold text-primary">Eligibility</h3>
-                  <ul className="mt-4 space-y-2 text-sm leading-relaxed text-textSecondary">
-                    <li>- To be eligible for Under Graduate Courses, candidate must have completed 10+2 / HSC.</li>
-                    <li>- To be eligible for Post Graduate Courses, candidate must have completed bachelor's degree.</li>
-                  </ul>
-                </div>
-                <div className="mt-8 rounded-btn border border-accent/30 bg-amber-50 p-5">
-                  <h3 className="font-heading text-xl font-bold text-primary">Admission Notice for Academic Year 2024-25</h3>
-                  <p className="mt-2 text-textSecondary">
-                    All you need is a Laptop, PC or mobile with a good internet connection. Click on the links below and
-                    follow the easy instructions.
-                  </p>
-                  <div className="mt-5 grid gap-3 md:grid-cols-2">
-                    {DISTANCE_ADMISSION_LINKS.slice(0, 3).map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-btn bg-white px-4 py-3 text-sm font-bold text-accent shadow-sm hover:underline"
-                      >
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-6 rounded-btn border border-borderSoft bg-section p-5">
-                  <h3 className="font-heading text-2xl font-bold text-primary">Admission Process for Distance Education</h3>
-                  <div className="mt-5 grid gap-3">
-                    {DISTANCE_ADMISSION_STEPS.map((step, index) => (
-                      <div key={step} className="rounded-btn bg-white px-4 py-3 text-sm font-semibold text-primary shadow-sm">
-                        STEP{index + 1}: {step}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-6 rounded-btn border border-borderSoft bg-white p-5 shadow-sm">
-                  <h3 className="font-heading text-xl font-bold text-primary">Academic Bank of Credits (ABC)</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-textSecondary">
-                    Academic Bank of Credits (ABC) is a virtual/digital storehouse that contains information of the
-                    credits earned by individual students throughout their learning journey using DigiLocker. As per new
-                    UGC rules every student is required to register for APAAR / ABC ID.
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    {DISTANCE_ADMISSION_LINKS.slice(3).map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex min-h-[44px] items-center justify-center rounded-btn bg-primary px-5 py-2.5 text-sm font-bold text-white"
-                      >
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {isDistanceCourses ? (
-              <div className="mt-8">
-                <div className="rounded-btn border border-borderSoft bg-section p-5">
-                  <p className="text-sm font-bold uppercase tracking-widest text-accent">Courses offered at</p>
-                  <h3 className="mt-2 font-heading text-2xl font-bold text-primary">
-                    SMC - Centre for Distance Education
-                  </h3>
-                  <p className="mt-4 leading-relaxed text-textSecondary">
-                    Location and age is no bar for obtaining a Graduation or Post Graduation Degree at your own time.
-                    Open and Distance Learning (ODL) is a system where teachers and learners need not necessarily be
-                    present either at the same place or same time and is flexible in regard to modalities and timing of
-                    teaching and learning as also the admission criteria without compromising necessary quality
-                    considerations.
-                  </p>
-                  <p className="mt-3 leading-relaxed text-textSecondary">
-                    The School of Open Learning (SoL) offers Undergraduate/Postgraduate Degree courses in the Arts and
-                    Commerce faculty. The medium of instruction of all courses is Marathi and English. This supports
-                    continuing education, skill updating of in-service personnel, and learners located at educationally
-                    disadvantageous locations.
-                  </p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {DISTANCE_TAGS.map((tag) => (
-                      <span key={tag} className="rounded-btn bg-white px-3 py-1.5 text-sm font-semibold text-primary shadow-sm">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                  {DISTANCE_COURSES.map((course) => (
-                    <a
-                      key={course.title}
-                      href={course.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-btn border border-borderSoft bg-white p-4 text-sm font-bold text-primary shadow-sm transition hover:border-accent hover:text-accent"
-                    >
-                      {course.title}
-                      <span className="mt-2 block text-xs font-bold text-accent">Prospectus PDF (Click Here)</span>
-                    </a>
-                  ))}
-                </div>
-                <div className="mt-8 rounded-btn border border-borderSoft bg-section p-5">
-                  <h3 className="font-heading text-xl font-bold text-primary">Eligibility</h3>
-                  <ul className="mt-4 space-y-2 text-sm leading-relaxed text-textSecondary">
-                    <li>- To be eligible for Under Graduate Courses, candidate must have completed 10+2 / HSC.</li>
-                    <li>- To be eligible for Post Graduate Courses, candidate must have completed bachelor's degree.</li>
-                  </ul>
-                </div>
-                <div className="mt-8 rounded-btn border border-borderSoft bg-white p-5 shadow-sm">
-                  <h3 className="font-heading text-xl font-bold text-primary">Course Prospectus Links</h3>
-                  <div className="mt-4 grid gap-3 md:grid-cols-2">
-                    {DISTANCE_RESOURCES.slice(1).map((resource) => (
-                      <a
-                        key={resource.href}
-                        href={resource.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-btn bg-section px-4 py-3 text-sm font-bold text-accent hover:underline"
-                      >
-                        {resource.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {isDistanceAdmission ? (
-              <div className="mt-8">
-                <div className="rounded-btn border border-accent/30 bg-amber-50 p-5">
-                  <h3 className="font-heading text-xl font-bold text-primary">Admission Notice for Academic Year 2024-25</h3>
-                  <p className="mt-2 text-textSecondary">
-                    All you need is a Laptop, PC or mobile with a good internet connection. Click on the links below and
-                    follow the easy instructions.
-                  </p>
-                  <div className="mt-5 grid gap-3 md:grid-cols-2">
-                    {DISTANCE_ADMISSION_LINKS.slice(0, 3).map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-btn bg-white px-4 py-3 text-sm font-bold text-accent shadow-sm hover:underline"
-                      >
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-6 rounded-btn border border-borderSoft bg-section p-5">
-                  <h3 className="font-heading text-2xl font-bold text-primary">Admission Process for Distance Education</h3>
-                  <div className="mt-5 grid gap-3">
-                    {DISTANCE_ADMISSION_STEPS.map((step, index) => (
-                      <div key={step} className="rounded-btn bg-white px-4 py-3 text-sm font-semibold text-primary shadow-sm">
-                        STEP{index + 1}: {step}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-6 rounded-btn border border-borderSoft bg-white p-5 shadow-sm">
-                  <h3 className="font-heading text-xl font-bold text-primary">Academic Bank of Credits (ABC)</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-textSecondary">
-                    Academic Bank of Credits (ABC) is a virtual/digital storehouse that contains information of the
-                    credits earned by individual students throughout their learning journey using DigiLocker. As per new
-                    UGC rules every student is required to register for APAAR / ABC ID.
-                  </p>
-                  <a
-                    href="https://www.abc.gov.in/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-btn bg-primary px-5 py-2.5 text-sm font-bold text-white"
-                  >
-                    ABC ID Tutorial (Click Here)
-                  </a>
-                  <a
-                    href="https://www.abc.gov.in/faq.php"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="ml-0 mt-3 inline-flex min-h-[44px] items-center justify-center rounded-btn border-2 border-primary px-5 py-2.5 text-sm font-bold text-primary sm:ml-3 sm:mt-4"
-                  >
-                    ABC FAQ (Click Here)
-                  </a>
-                </div>
-                <div className="mt-6 rounded-btn border border-borderSoft bg-section p-5">
-                  <h3 className="font-heading text-xl font-bold text-primary">Important Links</h3>
-                  <div className="mt-4 grid gap-3 md:grid-cols-2">
-                    {DISTANCE_RESOURCES.map((resource) => (
-                      <a
-                        key={resource.href}
-                        href={resource.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-btn bg-white px-4 py-3 text-sm font-bold text-accent shadow-sm hover:underline"
-                      >
-                        {resource.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ) : null}
+
+
+
             {isStudentSupport ? (
               <div className="mt-8 space-y-8">
                 {STUDENT_SUPPORT_ACTIVITIES.map((activity, index) => (
@@ -2080,7 +1766,7 @@ export function SectionContentPage() {
                         <h3 className="mt-2 font-heading text-2xl font-bold text-primary">{activity.title}</h3>
                         <div className="mt-4 space-y-3 text-sm leading-relaxed text-textSecondary">
                           {activity.paragraphs.map((paragraph) => (
-                            <p key={paragraph}>{paragraph}</p>
+                            <p key={paragraph}><EmphasizedText text={paragraph} /></p>
                           ))}
                         </div>
                         {activity.points?.length ? (
@@ -2150,7 +1836,7 @@ export function SectionContentPage() {
                     <article key={report.title} className="rounded-btn border border-borderSoft bg-white p-5 shadow-sm">
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                         <h3 className="font-heading text-2xl font-bold text-primary">{report.title}</h3>
-                        <span className="rounded-btn bg-section px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-accent">
+                        <span className="text-xs font-bold uppercase tracking-wide text-accent">
                           PDF pending
                         </span>
                       </div>

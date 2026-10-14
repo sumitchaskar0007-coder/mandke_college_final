@@ -1,3 +1,4 @@
+import { DistanceEducationContent } from "./DistanceEducationContent";
 import type { ReactNode } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
@@ -22,19 +23,7 @@ export function SimpleContentPage({
   );
 }
 
-export function DistanceEducationPage() {
-  return (
-    <SimpleContentPage title="Distance Education">
-      <p>
-        Detailed procedures, links, and FAQs can be managed from the admin CMS. For admissions counselling, visit the{" "}
-        <Link to="/admissions" className="font-semibold text-accent hover:underline">
-          Admissions
-        </Link>{" "}
-        section.
-      </p>
-    </SimpleContentPage>
-  );
-}
+export function DistanceEducationPage() { return <DistanceEducationContent />; }
 
 export function IQACPage() {
   return (

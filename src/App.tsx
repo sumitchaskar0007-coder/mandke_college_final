@@ -1,11 +1,12 @@
-import { Component, lazy, type ErrorInfo, type ReactNode } from "react";
+import { PageErrorBoundary } from "./components/layout/PageErrorBoundary";
+import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { MarketingLayout } from "./components/layout/MarketingLayout";
 
 const HomePage = lazy(() => import("./pages/HomePage").then((m) => ({ default: m.HomePage })));
 const AboutPage = lazy(() => import("./pages/AboutPage").then((m) => ({ default: m.AboutPage })));
+const MandkeApproachPage = lazy(() => import("./pages/MandkeApproachPage").then(m => ({ default: m.MandkeApproachPage })));
 const CommercePage = lazy(() => import("./pages/CommercePage").then((m) => ({ default: m.CommercePage })));
-const MandkeApproachPage = lazy(() => import("./pages/MandkeApproachPage").then((m) => ({ default: m.MandkeApproachPage })));
 // BBA and BCA pages are temporarily disabled.
 // const BbaPage = lazy(() => import("./pages/BbaPage").then((m) => ({ default: m.BbaPage })));
 // const BcaPage = lazy(() => import("./pages/BcaPage").then((m) => ({ default: m.BcaPage })));
@@ -26,18 +27,7 @@ const IQACPage = lazy(() => import("./pages/IQACPage").then((m) => ({ default: m
 const IQACDetailPage = lazy(() => import("./pages/IQACPage").then((m) => ({ default: m.IQACDetailPage })));
 const ActivitiesPage = lazy(() => import("./pages/SimpleContentPage").then((m) => ({ default: m.ActivitiesPage })));
 const StakeholdersPage = lazy(() => import("./pages/SimpleContentPage").then((m) => ({ default: m.StakeholdersPage })));
-const MHHFPage = lazy(() => import("./pages/SimpleContentPage").then((m) => ({ default: m.MHHFPage })));
 const SectionContentPage = lazy(() => import("./pages/SectionContentPage").then((m) => ({ default: m.SectionContentPage })));
-
-class AppErrorBoundary extends Component<{ children: ReactNode }, { error: Error | null }> {
-  state = { error: null as Error | null };
-  static getDerivedStateFromError(error: Error) { return { error }; }
-  componentDidCatch(error: Error, info: ErrorInfo) { console.error("Mandke College render error", error, info); }
-  render() {
-    if (!this.state.error) return this.props.children;
-    return <main className="mx-auto max-w-2xl px-6 py-24 text-center"><h1 className="font-heading text-3xl font-bold text-primary">Page could not load</h1><p className="mt-4 text-textSecondary">Refresh the page or restart the development server.</p><pre className="mt-6 overflow-auto rounded-btn bg-slate-100 p-4 text-left text-xs text-red-700">{this.state.error.message}</pre></main>;
-  }
-}
 
 function NotFound() {
   return (
@@ -49,7 +39,7 @@ function NotFound() {
 
 export default function App() {
   return (
-    <AppErrorBoundary>
+    <PageErrorBoundary>
       <Routes>
         <Route element={<MarketingLayout />}>
           <Route path="/" element={<HomePage />} />
@@ -57,8 +47,8 @@ export default function App() {
           <Route path="/about/faculty" element={<AboutFacultyPage />} />
           <Route path="/about/:slug" element={<SectionContentPage />} />
           <Route path="/academics" element={<Navigate to="/academics/courses" replace />} />
-          <Route path="/academics/mandke-college-approach" element={<MandkeApproachPage />} />
           {/* BBA and BCA routes are temporarily disabled. */}
+          <Route path="/academics/mandke-college-approach" element={<MandkeApproachPage />} />
           <Route path="/academics/:slug" element={<SectionContentPage />} />
           <Route path="/commerce" element={<CommercePage />} />
           <Route path="/distance-education" element={<Simple />} />
@@ -71,7 +61,8 @@ export default function App() {
           <Route path="/stakeholders" element={<StakeholdersPage />} />
           <Route path="/stakeholders/:slug" element={<SectionContentPage />} />
           <Route path="/alumni" element={<AlumniPage />} />
-          <Route path="/mhhf" element={<MHHFPage />} />
+          <Route path="/mhhf" element={<Navigate to="/about#mhhf" replace />} />
+          <Route path="/mhhf/about-mhhf" element={<Navigate to="/about#mhhf" replace />} />
           <Route path="/mhhf/:slug" element={<SectionContentPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/admissions" element={<AdmissionsPage />} />
@@ -84,6 +75,6 @@ export default function App() {
         </Route>
 
       </Routes>
-    </AppErrorBoundary>
+    </PageErrorBoundary>
   );
 }

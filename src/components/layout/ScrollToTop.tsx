@@ -11,11 +11,17 @@ export function ScrollToTop() {
     }
 
     const targetId = decodeURIComponent(hash.slice(1));
-    const frame = window.requestAnimationFrame(() => {
-      document.getElementById(targetId)?.scrollIntoView({ block: "start" });
+    const scrollToTarget = () => {
+      const target = document.getElementById(targetId);
+      if (!target) return false;
+      target.scrollIntoView({ block: "start" });
+      return true;
+    };
+    const observer = new MutationObserver(() => {
+      if (scrollToTarget()) observer.disconnect();
     });
-
-    return () => window.cancelAnimationFrame(frame);
+    if (!scrollToTarget()) observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
   }, [pathname, hash]);
 
   return null;

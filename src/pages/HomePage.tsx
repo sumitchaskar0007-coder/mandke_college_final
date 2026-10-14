@@ -52,7 +52,7 @@ const DEFAULT_ANNOUNCEMENTS: Announcement[] = [
   },
   {
     _id: "silver-jubilee",
-    title: "Silver Jubilee journey toward 2027",
+    title: "Upcoming Silver Jubilee Year 2027–28",
     body: "Celebrating a legacy of commerce education, student confidence, and community impact.",
     type: "Milestone",
   },
@@ -411,7 +411,7 @@ export function HomePage() {
               className="flex flex-wrap items-start gap-3 rounded-btn border border-borderSoft bg-white p-5 shadow-card transition hover:shadow-md"
             >
               {a.isPinned ? <Newspaper className="mt-1 h-5 w-5 text-accent" aria-hidden /> : null}
-              <span className="rounded-btn bg-section px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary">
+              <span className="text-xs font-bold uppercase tracking-wide text-accent">
                 {a.type || "Update"}
               </span>
               <div className="min-w-0 flex-1">
@@ -423,31 +423,7 @@ export function HomePage() {
         </ul>
       </section>
 
-      <section className="bg-gradient-to-b from-section to-white py-8 md:py-10">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="font-heading text-3xl font-bold tracking-tight text-primary md:text-4xl">Campus calendar</h2>
-            <Link to="/contact" className="min-h-[44px] text-base font-bold text-accent hover:underline">
-              Plan a visit
-            </Link>
-          </div>
-          <div className="mt-6 flex gap-4 overflow-x-auto pb-2 pt-1 [-webkit-overflow-scrolling:touch]">
-            {visibleEvents.slice(0, 6).map((ev) => (
-              <article
-                key={ev._id}
-                className="min-w-[260px] shrink-0 rounded-btn border border-borderSoft bg-white p-5 shadow-card transition hover:-translate-y-1 hover:shadow-lg md:min-w-[300px]"
-              >
-                <div className="flex items-center gap-2 text-sm font-semibold text-accent">
-                  <Calendar className="h-4 w-4" />
-                  {ev.date ? new Date(ev.date).toLocaleDateString() : "TBC"}
-                </div>
-                <h3 className="mt-3 font-heading text-lg font-bold text-primary">{ev.title}</h3>
-                {ev.venue ? <p className="mt-2 text-sm text-textSecondary">{ev.venue}</p> : null}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       <section className="mx-auto max-w-6xl px-4 py-8 md:py-10">
         <div className="mx-auto max-w-3xl text-center">
@@ -564,12 +540,7 @@ export function HomePage() {
             >
               Apply now
             </Link>
-            <Link
-              to="/commerce"
-              className="inline-flex min-h-[48px] min-w-[160px] items-center justify-center rounded-btn border-2 border-primary px-8 py-3.5 text-base font-bold text-primary"
-            >
-              Brochure
-            </Link>
+            <span aria-disabled="true" className="self-center text-sm text-textSecondary">Brochure coming soon</span>
             <Link
               to="/contact"
               className="inline-flex min-h-[48px] min-w-[160px] items-center justify-center rounded-btn bg-primary px-8 py-3.5 text-base font-bold text-white"

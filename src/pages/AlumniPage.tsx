@@ -10,29 +10,8 @@ const ALUMNI_STATS = [
     { icon: Heart, label: "Giving Back", value: "Active" },
 ];
 
-const TESTIMONIALS = [
-    {
-        name: "Rahul Sharma",
-        role: "Finance Manager, HDFC Bank",
-        batch: "2015-2018",
-        quote:
-            "Mandke College taught me not just commerce theory, but practical skills that helped me excel in banking. The placement support was exceptional.",
-    },
-    {
-        name: "Priya Deshmukh",
-        role: "Entrepreneur, Digital Marketing Startup",
-        batch: "2012-2015",
-        quote:
-            "The faculty believed in us and provided mentorship that went beyond academics. That confidence helped me start my own venture.",
-    },
-    {
-        name: "Amit Joshi",
-        role: "Senior Analyst, EY",
-        batch: "2018-2021",
-        quote:
-            "From day one, Mandke emphasized industry-readiness. The projects and internships gave us real-world experience that employers value.",
-    },
-];
+// Populate only with approved alumni testimonials from the supplied spreadsheet.
+const TESTIMONIALS: { name: string; role: string; batch: string; quote: string }[] = [];
 
 export function AlumniPage() {
     return (
@@ -76,7 +55,7 @@ export function AlumniPage() {
                     viewport={{ once: true }}
                     className="mx-auto max-w-3xl text-center"
                 >
-                    <p className="text-sm font-bold uppercase tracking-widest text-accent">By The Numbers</p>
+                    <p className="text-sm font-bold uppercase tracking-widest text-accent">MANDKE COLLEGE ALUMNI NETWORK</p>
                     <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-primary md:text-4xl lg:text-5xl">
                         A thriving alumni ecosystem
                     </h2>
@@ -115,6 +94,7 @@ export function AlumniPage() {
                             From banking and consulting to entrepreneurship and education — Mandke alumni lead across sectors.
                         </p>
                     </div>
+                    {TESTIMONIALS.length === 0 && <p className="mt-6 text-center text-textSecondary">Alumni stories will be published here. Share your experience using the registration form below.</p>}
                     <div className="mt-8 grid gap-5 lg:grid-cols-3">
                         {TESTIMONIALS.map((t, i) => (
                             <motion.article
@@ -189,14 +169,7 @@ export function AlumniPage() {
                             </div>
                         ))}
                     </div>
-                    <div className="mt-7 text-center">
-                        <Link
-                            to="/contact"
-                            className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-primary px-8 py-3.5 text-base font-bold text-primary hover:bg-primary/5"
-                        >
-                            Connect with us
-                        </Link>
-                    </div>
+
                 </div>
             </section>
 
@@ -207,9 +180,9 @@ export function AlumniPage() {
                     <h2 className="font-heading text-3xl font-bold md:text-4xl">Your Mandke story matters</h2>
                     <p className="mt-4 text-lg text-white/90">Share how the college shaped your career and inspire the next generation of Mandke students.</p>
                     <div className="mt-6 flex flex-wrap justify-center gap-4">
-                        <button className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-white px-8 py-3.5 text-base font-bold text-primary shadow-lg">
+                        <a href="https://forms.gle/QRV2kNZTyhLywEwY8" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-accent px-8 py-3.5 text-base font-bold text-white shadow-lg transition hover:brightness-110">
                             Share Your Story
-                        </button>
+                        </a>
                     </div>
                 </div>
             </section>

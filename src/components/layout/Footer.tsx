@@ -1,6 +1,4 @@
 ﻿import { Link } from "react-router-dom";
-import { useState, FormEvent } from "react";
-import { api } from "../../api/client";
 import logoUrl from "../../assets/logo-optimized.png";
 
 const quick = [
@@ -11,24 +9,9 @@ const quick = [
 ];
 
 export function Footer() {
-  const [email, setEmail] = useState("");
-  const [msg, setMsg] = useState<string | null>(null);
-
-  async function onNewsletter(e: FormEvent) {
-    e.preventDefault();
-    setMsg(null);
-    try {
-      await api.post("/newsletter", { email });
-      setMsg("Thanks for subscribing!");
-      setEmail("");
-    } catch {
-      setMsg("Could not subscribe. Try again later.");
-    }
-  }
-
   return (
     <footer className="bg-primary text-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-2 lg:grid-cols-3">
         <div>
           <div className="flex items-start gap-4">
             <img
@@ -89,31 +72,7 @@ export function Footer() {
           </address>
         </div>
 
-        <div>
-          <p className="font-semibold text-white">Newsletter</p>
-          <p className="mt-2 text-sm text-white/70">Get updates on admissions and events.</p>
-          <form onSubmit={onNewsletter} className="mt-3 flex max-w-sm flex-col gap-2">
-            <label htmlFor="newsletter-email" className="sr-only">
-              Email
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email address"
-              className="min-h-[44px] rounded-btn border border-white/25 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/45 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            />
-            <button
-              type="submit"
-              className="min-h-[44px] rounded-btn bg-accent px-4 py-2 text-sm font-semibold text-white hover:opacity-95"
-            >
-              Subscribe
-            </button>
-            {msg ? <p className="text-xs text-white/70">{msg}</p> : null}
-          </form>
-        </div>
+
       </div>
 
       <div className="border-t border-white/15">

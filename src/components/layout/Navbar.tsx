@@ -35,6 +35,7 @@ export function Navbar() {
           <span className="block text-[9px] font-extrabold leading-snug text-yellow-500 sm:text-sm">
             Established in 2002
           </span>
+          <span className="mt-2 inline-block rounded-full border border-amber-400 bg-amber-50 px-3 py-1 text-[10px] font-bold text-amber-900 sm:text-xs">Upcoming Silver Jubilee Year • 2027–28</span>
         </Link>
 
         <div className="flex justify-end">

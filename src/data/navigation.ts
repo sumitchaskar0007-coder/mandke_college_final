@@ -198,20 +198,23 @@ export const SECTION_PAGES: SectionPage[] = [
       "At Smt. Sudhatai Mandke College, we offer career-focused undergraduate programs designed to prepare students for success in academics, industry, and entrepreneurship.",
       "Affiliated with Savitribai Phule Pune University (SPPU), our courses combine strong theoretical foundations with practical learning, skill development, and placement opportunities.",
       "Smt. Sudhatai Mandke College is proud to align its academic framework with the National Education Policy (NEP) 2020, introduced by the Government of India to make higher education more holistic, flexible, multidisciplinary, and skill-driven.",
-      "Whether you aspire to build a career in commerce, management, finance, IT, or entrepreneurship, our programs provide the right platform to shape your future.",
+      "Whether you aspire to build a career in commerce, management, finance, IT, or entrepreneurship, our programs provide the right platform to shape your future as per your liking and capability.",
     ],
     highlights: [],
   },
   {
-    label: "Mandke College Approach",
-    to: "/academics/mandke-college-approach",
+    label: "NEP 2020",
+    to: "/academics/nep-2020",
     group: "Academics",
-    subtitle: "Building Competence & Mindset through a semester-wise, multidisciplinary student journey.",
-    content: [],
-    highlights: [],
+    subtitle: "Mandke College aligns its academic framework with the National Education Policy 2020.",
+    content: [
+      "Smt. Sudhatai Mandke College is proud to align its academic framework with the National Education Policy (NEP) 2020, introduced by the Government of India to make higher education more holistic, flexible, multidisciplinary, and skill-driven.",
+      "By adopting NEP guidelines, we ensure that our students are prepared not only with academic knowledge but also with the 21st-century skills required for careers, entrepreneurship, and lifelong learning.",
+    ],
+    highlights: ["CBCS", "Multiple Entry & Exit", "Skill Development", "Multidisciplinary Learning", "Holistic Development"],
   },
   // BBA and BCA section pages are temporarily disabled.
-  ...ACADEMICS_LINKS.filter((link) => !["/academics/courses", "/academics/mandke-college-approach"].includes(link.to)).map((link) => ({
+  ...ACADEMICS_LINKS.filter((link) => !["/academics/courses", "/academics/nep-2020"].includes(link.to)).map((link) => ({
     ...link,
     group: "Academics",
     subtitle:

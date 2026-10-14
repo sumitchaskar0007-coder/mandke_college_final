@@ -61,7 +61,7 @@ export function BlogPostPage() {
         {(data.tags || []).length ? (
           <div className="mt-8 flex flex-wrap gap-2">
             {data.tags!.map((t) => (
-              <span key={t} className="rounded-badge bg-section px-2 py-1 text-xs">
+              <span key={t} className="text-xs font-semibold text-textSecondary">
                 {t}
               </span>
             ))}
